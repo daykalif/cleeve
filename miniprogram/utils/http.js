@@ -1,5 +1,4 @@
 import {config} from "../config/config";
-import {data1} from "../mock/home/names";
 import {promisic} from "./util";
 
 class Http {

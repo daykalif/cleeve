@@ -1,5 +1,5 @@
 import {Http} from "../utils/http";
-import {data1} from "../mock/home/names";
+import {namesData} from "../mock/home/names";
 
 class Theme {
     static async getHomeLocationA(callback) {
@@ -9,7 +9,7 @@ class Theme {
                 names: 't-1'
             }
         })
-        return data1 ?? data;
+        return namesData ?? data;
     }
 }
 
