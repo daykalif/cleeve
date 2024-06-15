@@ -1,0 +1,29 @@
+<!--components/category-grid/index.wxml-->
+<view class="container">
+<!--    <l-grid l-class="inner-container">-->
+<!--        <block wx:for="{{grid}}" wx:key="{{index}}">-->
+<!--            <l-grid-item key="{{index}}" slot="{{index}}">-->
+<!--                <view class="grid-item">-->
+<!--                    <image class="img" src="{{item.img}}"></image>-->
+<!--                    <text class="text">{{item.title}}</text>-->
+<!--                </view>-->
+<!--            </l-grid-item>-->
+<!--        </block>-->
+<!--    </l-grid>-->
+
+
+    <l-grid>
+        <l-grid-item key="one" slot="one">
+            <view class="num">3</view>
+            <view class="text">助力</view>
+        </l-grid-item>
+        <l-grid-item key="two" slot="two">
+            <view class="num">134</view>
+            <view class="text">点赞</view>
+        </l-grid-item>
+        <l-grid-item key="three" slot="three">
+            <view class="num">1648</view>
+            <view class="text">评论</view>
+        </l-grid-item>
+    </l-grid>
+</view>
