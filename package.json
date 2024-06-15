@@ -1,15 +1,25 @@
 {
-  "name": "miniprogram-ts-less-quickstart",
+  "name": "c-sleeve",
   "version": "1.0.0",
-  "description": "",
-  "scripts": {
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
-  "license": "",
-  "dependencies": {
-  },
+  "license": "ISC",
   "devDependencies": {
     "miniprogram-api-typings": "^2.8.3-1"
-  }
+  },
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daykalif/cleeve.git"
+  },
+  "bugs": {
+    "url": "https://github.com/daykalif/cleeve/issues"
+  },
+  "homepage": "https://github.com/daykalif/cleeve#readme",
+  "dependencies": {
+    "_lin-ui@0.9.13@lin-ui": "^0.9.13",
+    "lin-ui": "^0.9.13"
+  },
+  "description": ""
 }
