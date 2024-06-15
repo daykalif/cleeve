@@ -1,26 +1,35 @@
 // pages/home/home.js
 
 import {Theme} from "../../model/theme";
+import {Banner} from "../../model/banner";
 
 Page({
     data: {
-        topTheme: null,
+        themeA: null,
+        bannerB: null,
     },
 
-    onLoad: async function () {
-        const data = await Theme.getHomeLocationA();
+    async initAllData() {
+        const themeA = await Theme.getHomeLocationA();
+        const bannerB = await Banner.getHomeLocationB();
+
         this.setData({
-            topTheme: data[0]
+            themeA: themeA[0],
+            bannerB,
         })
     },
 
-    "onPullDownRefresh"() {
+    async onLoad() {
+        await this.initAllData();
+    },
+
+    onPullDownRefresh() {
 
     },
-    "onReachBottom"() {
+    onReachBottom() {
 
     },
-    "onShareAppMessage"() {
+    onShareAppMessage() {
 
     }
 })
