@@ -1,16 +1,15 @@
 import {Http} from "../utils/http";
+import {data1} from "../mock/home/names";
 
 class Theme {
-    static getHomeLocationA(callback) {
-        Http.request({
+    static async getHomeLocationA(callback) {
+        const data = await Http.request({
             url: 'theme/by/names',
             data: {
                 names: 't-1'
-            },
-            callback: data => {
-                callback(data)
             }
         })
+        return data1 ?? data;
     }
 }
 
