@@ -1,0 +1,5 @@
+/** 格式化代码：option + command + L */
+.top-theme {
+    width: 100%;
+    height: 260rpx;
+}
