@@ -1,3 +1,7 @@
+/**
+ * 第三部分
+ * @file: 六宫格 category
+ */
 import {Http} from "../utils/http";
 import {categoryData} from "../mock/home/category";
 

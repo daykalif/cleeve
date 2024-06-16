@@ -1,7 +1,7 @@
 <view>
-    <!--  主题  -->
+    <!--  主题(sale) theme -->
     <image class="top-theme" src="{{themeA.entrance_img}}"></image>
-    <!--  轮播图  -->
+    <!--  轮播图 banner  -->
     <swiper class="swiper"
             indicator-dots
             indicator-active-color="#157658"
@@ -13,6 +13,8 @@
             </swiper-item>
         </block>
     </swiper>
-    <!--  六宫格  -->
+    <!--  六宫格(分类) category  -->
     <s-category-grid grid="{{grid}}"></s-category-grid>
+    <!--  活动(优惠券) activity  -->
+    <image class="activity" src="{{activityD.entrance_img}}"></image>
 </view>
