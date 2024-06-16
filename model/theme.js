@@ -1,9 +1,9 @@
 /**
- * 第一部分
+ * 第一部分A,E
  * @file: 主题 theme
  */
 import {Http} from "../utils/http";
-import {namesData} from "../mock/home/names";
+import {namesData, withSpuData} from "../mock/home/names";
 
 class Theme {
     themes = [];
@@ -37,6 +37,30 @@ class Theme {
 
     getHomeLocationH() {
         return this.themes.find(t => t.name === Theme.locationH)
+    }
+
+    /**
+     * 何时需要加static？
+     *
+     * 如果数据不需要保存状态，则加static
+     * 如果要保存状态，则优先做成实例的方法
+     */
+
+    /**
+     * 何时需要加async？
+     *
+     * 需要强制保证返回的是promise的时候
+     */
+    // 如果方法里面未涉及到类的对象以及实例属性，则编辑器会自动推断应该用static
+    static getThemeSpuByName(name) {
+        const data = Http.request({
+            url: `theme/name/${name}/with_spu`
+        });
+        return withSpuData ?? data;
+    }
+
+    static getHomeLocationESpu() {
+        return Theme.getThemeSpuByName(Theme.locationE)
     }
 }
 

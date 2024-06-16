@@ -1,5 +1,5 @@
 /**
- * 第二部分
+ * 第二部分B
  * @file: 轮播图 banner
  */
 import {Http} from "../utils/http";

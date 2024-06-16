@@ -17,4 +17,10 @@
     <s-category-grid grid="{{grid}}"></s-category-grid>
     <!--  活动(优惠券) activity  -->
     <image class="activity" src="{{activityD.entrance_img}}"></image>
+    <!--  主题(每周上新) theme -->
+    <s-spu-scroll
+            theme="{{themeE}}"
+            spu-list="{{themeESpu}}"
+            wx:if="{{themeE.online}}">
+    </s-spu-scroll>
 </view>
