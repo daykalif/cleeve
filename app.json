@@ -3,8 +3,11 @@
     "pages/home/home"
   ],
   "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "风袖",
     "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
+    "onReachBottomDistance": 50
   },
   "style": "v2",
   "rendererOptions": {
