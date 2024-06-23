@@ -48,8 +48,5 @@ Component({
                 url: `/pages/detail/detail?pid=${pid}`
             })
         }
-        //业务型组件
-        //通用型组件
-        //EventChannel
     }
 })
