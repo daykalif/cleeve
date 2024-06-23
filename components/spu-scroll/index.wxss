@@ -11,6 +11,16 @@
     height: 90rpx;
 }
 
+.price-unit {
+    font-size: 24rpx !important;
+    color: #157658 !important;
+}
+
+.price-value {
+    font-size: 26rpx !important;
+    color: #157658 !important;
+}
+
 .scroll-view {
     margin-top: 28rpx;
     display: flex;

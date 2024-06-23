@@ -11,6 +11,8 @@ Page({
         bannerB: null,
         grid: [],
         activityD: null,
+        themeE: null,
+        themeESpu: [],
     },
 
     async initAllData() {
