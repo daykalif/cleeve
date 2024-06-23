@@ -13,14 +13,14 @@ class Banner {
         const data = await Http.request({
             url: `banner/name/${Banner.locationB}`
         });
-        return bannerDataB ?? data;
+        return data ?? bannerDataB;
     }
 
     static async getHomeLocationG() {
         const data = await Http.request({
             url: `banner/name/${Banner.locationG}`
         });
-        return bannerDataG ?? data;
+        return data ?? bannerDataG;
     }
 }
 

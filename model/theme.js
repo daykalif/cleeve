@@ -20,7 +20,7 @@ class Theme {
                 names
             }
         })
-        this.themes = namesData ?? data;
+        this.themes = data ?? namesData;
     }
 
     getHomeLocationA() {
@@ -56,7 +56,7 @@ class Theme {
         const data = Http.request({
             url: `theme/name/${name}/with_spu`
         });
-        return withSpuData ?? data;
+        return data ?? withSpuData;
     }
 
     static getHomeLocationESpu() {

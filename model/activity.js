@@ -12,7 +12,7 @@ class Activity {
         const data = await Http.request({
             url: `activity/name/${Activity.locationD}`
         })
-        return activityData ?? data;
+        return data ?? activityData;
     }
 }
 
