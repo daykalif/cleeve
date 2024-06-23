@@ -1,3 +1,7 @@
+/**
+ * @file: 封装http请求
+ * @description: 封装wx请求，并通过自定义promisic方法，返回promise后的数据格式
+ */
 import {config} from "../config/config";
 import {promisic} from "./util";
 

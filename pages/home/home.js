@@ -4,6 +4,7 @@ import {Theme} from "../../model/theme";
 import {Banner} from "../../model/banner";
 import {Category} from "../../model/category";
 import {Activity} from "../../model/activity";
+import {SpuPaging} from "../../model/spu-paging";
 
 Page({
     data: {
@@ -13,6 +14,7 @@ Page({
         activityD: null,
         themeE: null,
         themeESpu: [],
+        spuPaging: null,
     },
 
     async initAllData() {
@@ -50,8 +52,21 @@ Page({
         })
     },
 
+    /** 加载瀑布流第一页数据 */
+    async initBottomSpuList() {
+        const paging = SpuPaging.getLatestPaging()
+        this.data.spuPaging = paging
+        const data = await paging.getMoreData()
+        if (!data) {
+            return;
+        }
+        // 瀑布流数据，传递给spu-preview组件（下列方法由LinUi提供）
+        wx.lin.renderWaterFlow(data.items)
+    },
+
     async onLoad() {
         await this.initAllData();
+        await this.initBottomSpuList();
     },
 
     onPullDownRefresh() {

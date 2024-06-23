@@ -32,7 +32,7 @@
     "node_modules/miniprogram-api-typings/types/wx/lib.wx.api.d.ts",
     "node_modules/miniprogram-api-typings/types/wx/lib.wx.app.d.ts",
     "node_modules/miniprogram-api-typings/types/wx/lib.wx.api.d.ts"
-  ],
+, "components/spu-preview/index.js"  ],
   "exclude": [
     "node_modules"
   ]

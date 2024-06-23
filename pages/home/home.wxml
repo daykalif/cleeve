@@ -38,4 +38,8 @@
     <!--  主题（时尚出街[怎么穿]发愁？） theme  -->
     <image src="{{themeH.entrance_img}}" class="fashion"></image>
 
+    <view class="spu-bottom">
+        <image class="title-spu-bottom" src="/imgs/home/title@interest.png"></image>
+        <l-water-flow generic:l-water-flow-item="s-spu-preview"></l-water-flow>
+    </view>
 </view>
