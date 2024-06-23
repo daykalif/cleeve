@@ -28,4 +28,8 @@
             spu-list="{{themeESpu}}"
             wx:if="{{themeE.online}}">
     </s-spu-scroll>
+
+    <!--  主题（风袖甄选） theme  -->
+    <image src="{{themeF.entrance_img}}" class="quality"></image>
+
 </view>
