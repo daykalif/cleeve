@@ -35,4 +35,7 @@
     <!--  主题+banner组合  -->
     <s-hot-list banner="{{bannerG}}"></s-hot-list>
 
+    <!--  主题（时尚出街[怎么穿]发愁？） theme  -->
+    <image src="{{themeH.entrance_img}}" class="fashion"></image>
+
 </view>
