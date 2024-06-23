@@ -8,6 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="@types/node" level="application" />
+    <orderEntry type="library" name="vue-js" level="project" />
+    <orderEntry type="library" name="@types/vue-ls" level="application" />
   </component>
 </module>

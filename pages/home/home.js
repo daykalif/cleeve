@@ -15,6 +15,7 @@ Page({
         themeE: null,
         themeESpu: [],
         spuPaging: null,
+        loadingType: 'loading',
     },
 
     async initAllData() {
@@ -69,12 +70,23 @@ Page({
         await this.initBottomSpuList();
     },
 
+    onReachBottom: async function () {
+        const data = await this.data.spuPaging.getMoreData()
+        if (!data) {
+            return
+        }
+        wx.lin.renderWaterFlow(data.items)
+        if (!data.moreData) {
+            this.setData({
+                loadingType: 'end'
+            })
+        }
+    },
+
     onPullDownRefresh() {
 
     },
-    onReachBottom() {
 
-    },
     onShareAppMessage() {
 
     }

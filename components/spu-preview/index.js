@@ -34,6 +34,7 @@ Component({
      * 组件的方法列表
      */
     methods: {
+        // 宽度固定340，动态计算高度
         onImgLoad(event) {
             const {width, height} = event.detail
             this.setData({
