@@ -32,4 +32,7 @@
     <!--  主题（风袖甄选） theme  -->
     <image src="{{themeF.entrance_img}}" class="quality"></image>
 
+    <!--  主题+banner组合  -->
+    <s-hot-list banner="{{bannerG}}"></s-hot-list>
+
 </view>
