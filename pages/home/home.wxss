@@ -17,3 +17,7 @@
     display: flex;
     margin-bottom: 20rpx;
 }
+
+/*.spu-scroll {*/
+/*    margin-top: 20rpx;*/
+/*}*/

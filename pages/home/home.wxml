@@ -1,6 +1,7 @@
 <view class="container">
     <!--  主题(sale) theme -->
     <image class="top-theme" src="{{themeA.entrance_img}}"></image>
+
     <!--  轮播图 banner  -->
     <swiper class="swiper"
             indicator-dots
@@ -13,11 +14,15 @@
             </swiper-item>
         </block>
     </swiper>
+
     <!--  六宫格(分类) category  -->
     <s-category-grid grid="{{grid}}"></s-category-grid>
+
     <!--  活动(优惠券) activity  -->
     <image class="activity" src="{{activityD.entrance_img}}"></image>
+
     <!--  主题(每周上新) theme -->
+    <!--自定义组件设置自定义class样式类 l-class="spu-scroll"-->
     <s-spu-scroll
             theme="{{themeE}}"
             spu-list="{{themeESpu}}"
