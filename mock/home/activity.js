@@ -1,9 +1,9 @@
 export const activityData = {
-    "id": 1,
-    "title": "全场无门槛立减券",
-    "entrance_img": "https://alimg.szlcsc.com/upload/public/product/rich/20190610/6946BC4BBD1CF17D22192A7EE8CE0EA1.png",
     "online": true,
-    "remark": "全场无门槛立减",
+    "remark": "限服装、鞋、文具等商品",
+    "end_time": null,
+    "id": 2,
+    "title": "夏日好礼送不停",
     "start_time": null,
-    "end_time": null
+    "entrance_img": "http://i1.sleeve.talelin.com/assets/e3a8a36c-7d41-4920-aed1-05d9969d9c7a.png"
 }

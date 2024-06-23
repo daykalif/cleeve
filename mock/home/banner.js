@@ -1,59 +1,75 @@
 export const bannerDataB = {
-    description: "首页顶部主banner",
-    id: 1,
-    img: null,
-    items: [
+    "id": 1,
+    "name": "b-1",
+    "description": "首页顶部主banner",
+    "img": "http://i1.sleeve.talelin.com/d87e180f-0f8a-480c-966a-f2f487b801cc.png",
+    "title": null,
+    "items": [
         {
-            banner_id: 1,
-            id: 12,
-            img: "http://i1.sleeve.talelin.com/cb0f237e-f4e5-4f65-a6e8-09a713695898.png",
-            keyword: 't-2',
-            name: null,
-            type: 3
+            "id": 12,
+            "img": "http://i1.sleeve.talelin.com/assets/b64affa6-3563-4031-ac98-e199887a78f0.png",
+            "keyword": "t-2",
+            "type": 3,
+            "name": null,
+            "banner_id": 1
         },
         {
-            banner_id: 2,
-            id: 13,
-            img: "http://i1.sleeve.talelin.com/assets/4c33b370-3570-4ca0-935e-9064b3e646e2.png",
-            keyword: 't-2',
-            name: null,
-            type: 3
+            "id": 13,
+            "img": "http://i1.sleeve.talelin.com/assets/8e133004-8b6b-434e-ba41-30ef8381372c.png",
+            "keyword": "23",
+            "type": 1,
+            "name": null,
+            "banner_id": 1
+        },
+        {
+            "id": 14,
+            "img": "http://i1.sleeve.talelin.com/assets/831bd34d-198c-4977-a913-3627aad0d943.png",
+            "keyword": "24",
+            "type": 1,
+            "name": null,
+            "banner_id": 1
+        },
+        {
+            "id": 15,
+            "img": "http://i1.sleeve.talelin.com/assets/161e6fd5-f553-46dc-9713-757e3332c092.png",
+            "keyword": "25",
+            "type": 1,
+            "name": null,
+            "banner_id": 1
         }
-    ],
-    name: "b-1",
-    title: null
+    ]
 }
 
 export const bannerDataG = {
-    description: "热销商品banner",
-    id: 2,
-    img: "https://ts1.cn.mm.bing.net/th?id=OIP-C.Cq4khLPWJj0oPbx9P_dRbwAAAA&w=307&h=203&c=8&rs=1&qlt=90&o=6&dpr=2&pid=3.1&rm=2",
-    items: [
+    "id": 2,
+    "name": "b-2",
+    "description": "热销商品banner",
+    "img": "http://i1.sleeve.talelin.com/assets/c086f193-5857-4652-a956-3e4ff9e3bdac.png",
+    "title": null,
+    "items": [
         {
-            banner_id: 2,
-            id: 5,
-            img: "https://img.alicdn.com/imgextra/i3/55128072/O1CN01Zm7oWC29V1yZdBkIx_!!0-saturn_solar.jpg_580x580q90.jpg_.webp",
-            keyword: "28",
-            name: "left",
-            type: 1,
+            "id": 5,
+            "img": "http://i1.sleeve.talelin.com/549e1185-c7e2-4a1f-9646-074ce4a64f5f.png",
+            "keyword": "28",
+            "type": 1,
+            "name": "left",
+            "banner_id": 2
         },
         {
-            banner_id: 2,
-            id: 6,
-            img: "https://g-search3.alicdn.com/img/bao/uploaded/i4/i3/2097666399/O1CN01Kduwf31x8nOAt8JLS_!!0-item_pic.jpg_580x580q90.jpg_.webp",
-            keyword: "26",
-            name: "right-top",
-            type: 1,
+            "id": 6,
+            "img": "http://i1.sleeve.talelin.com/fb683a8c-4c59-49aa-bca1-a6e654f780fa.png",
+            "keyword": "26",
+            "type": 1,
+            "name": "right-top",
+            "banner_id": 2
         },
         {
-            banner_id: 2,
-            id: 7,
-            img: "https://g-search3.alicdn.com/img/bao/uploaded/i4/i1/1772995108/O1CN01iA00fs1nbW2PEUxKM_!!0-item_pic.jpg_580x580q90.jpg_.webp",
-            keyword: "27",
-            name: "right-bottom",
-            type: 1,
+            "id": 7,
+            "img": "http://i1.sleeve.talelin.com/2c9d4333-9ba9-45fe-b3b0-537fbb961f44.png",
+            "keyword": "27",
+            "type": 1,
+            "name": "right-bottom",
+            "banner_id": 2
         }
-    ],
-    name: "b-2",
-    title: null
+    ]
 }
