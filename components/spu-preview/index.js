@@ -12,9 +12,6 @@ Component({
         tags: Array
     },
 
-    // sku
-    // sku-controller
-
     observers: {
         data: function (data) {
             if (!data) {
