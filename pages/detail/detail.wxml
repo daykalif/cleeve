@@ -1,2 +1,4 @@
 <!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+
+<!-- wjp-flow：第三步：在detail.json中引用realm组件，并定义名称s-realm -->
+<s-realm spu="{{spu}}"></s-realm>
