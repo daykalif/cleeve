@@ -29,8 +29,9 @@ class Matrix {
         }
     }
 
+    /** wjp-flow：第十四步：利用数学转置的逻辑处理矩阵，要区分i和j */
     transpose() {
-        const desArr = []
+        const desArr = [[], [], []]
         for (let j = 0; j < this.colsNum; j++) {
             desArr[j] = []
             for (let i = 0; i < this.rowsNum; i++) {

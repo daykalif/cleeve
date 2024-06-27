@@ -8,12 +8,20 @@
  */
 class Fence {
     valueTitles = []
+    specs   // 一组fence数组，如：[金属灰, 青芒色, 橘黄色]
 
     constructor(specs) {
-
+        this.specs = specs
     }
 
-    /** wjp-flow: 第十步：实现fence, 此处的fence暂时只以title作为内容创建*/
+    /** wjp-flow：第十六步：将转置矩阵的 */
+    init() {
+        this.specs.forEach(s => {
+            this.pushValueTitle(s.value)
+        })
+    }
+
+    /** wjp-flow：第十步：实现fence, 此处的fence暂时只以title作为内容创建*/
     pushValueTitle(title) {
         this.valueTitles.push(title)
     }

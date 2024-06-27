@@ -12,7 +12,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: async function (options) {
-        /** wjp-flow 第二步：获取spu-preview component点击传入的pid，并通过pid请求数据 */
+        /** wjp-flow：第二步：获取spu-preview component点击传入的pid，并通过pid请求数据 */
         const pid = options.pid
         const spu = await Spu.getDetail(pid)
         this.setData({

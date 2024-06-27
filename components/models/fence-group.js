@@ -84,7 +84,20 @@ class FenceGroup {
         return new Matrix(m)
     }
 
+    /** wjp-flow：第十五步：调用自己实现的矩阵转置方法 */
+    initFences1() {
+        const matrix = this._createMatrix(this.skuList)
+        const fences = []
 
+        const AT = matrix.transpose()
+        console.log('转置以后的数据：', AT)
+        AT.forEach(r => {
+            const fence = new Fence(r)
+            fence.init()
+            fences.push(fence)
+        })
+        console.log('完整的fences：', fences)
+    }
 }
 
 export {

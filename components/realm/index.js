@@ -35,7 +35,8 @@ Component({
             }
             /** wjp-flow：第十三步：创建FenceGroup，调用initFences方法 */
             const fenceGroup = new FenceGroup(spu)
-            fenceGroup.initFences()
+            // fenceGroup.initFences()
+            fenceGroup.initFences1()
         }
     },
 
