@@ -51,24 +51,24 @@ class FenceGroup {
         this.skuList = spu.sku_list
     }
 
-    initFences() {
-        /** wjp-flow：第七步：调用矩阵处理方法 */
-        const matrix = this._createMatrix(this.skuList)
-        const fences = []
-        let currentJ = -1;
-
-        /** wjp-flow：第十二步：调用matrix的each方法，获取到期望的矩阵数据，保存于fences */
-        matrix.each((element, i, j) => {
-            // 开启一个新列，需要创建一个新的Fence
-            if (currentJ !== j) {
-                currentJ = j
-                fences[currentJ] = this._createFence(element)
-                // createFence
-            }
-            fences[currentJ].pushValueTitle(element.value)
-        })
-        console.log(fences)
-    }
+    // initFences1() {
+    //     /** wjp-flow：第七步：调用矩阵处理方法 */
+    //     const matrix = this._createMatrix(this.skuList)
+    //     const fences = []
+    //     let currentJ = -1;
+    //
+    //     /** wjp-flow：第十二步：调用matrix的each方法，获取到期望的矩阵数据，保存于fences */
+    //     matrix.each((element, i, j) => {
+    //         // 开启一个新列，需要创建一个新的Fence
+    //         if (currentJ !== j) {
+    //             currentJ = j
+    //             fences[currentJ] = this._createFence(element)
+    //             // createFence
+    //         }
+    //         fences[currentJ].pushValueTitle(element.value)
+    //     })
+    //     console.log(fences)
+    // }
 
     _createFence(element) {
         const fence = new Fence()
@@ -85,7 +85,7 @@ class FenceGroup {
     }
 
     /** wjp-flow：第十五步：调用自己实现的矩阵转置方法 */
-    initFences1() {
+    initFences() {
         const matrix = this._createMatrix(this.skuList)
         const fences = []
 
