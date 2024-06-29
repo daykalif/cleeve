@@ -1,12 +1,12 @@
-// components/fence/index.ts
+// components/cell/index.ts
 Component({
 
     /**
      * 组件的属性列表
      */
     properties: {
-        /** wjp-flow：第二十一步：定义属性fence */
-        fence: Object
+        /** wjp-flow：第二十三步：定义属性cell */
+        cell: Object
     },
 
     /**

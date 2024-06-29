@@ -3,4 +3,14 @@
     规格名：
     规格值  规格值  规格值  ...
 -->
-<text>components/fence/index.wxml</text>
+
+<!-- wjp-flow：第二十二步：循环展示cells -->
+<view class="container">
+    <view class="title">{{fence.title}}</view>
+    <view>
+        <block wx:for="{{fence.cells}}" wx:key="index">
+            <!-- wjp-flow：第二十五步：fence/index.json中注册s-cell，并展示cell组件 -->
+            <s-cell cell="{{item}}"></s-cell>
+        </block>
+    </view>
+</view>

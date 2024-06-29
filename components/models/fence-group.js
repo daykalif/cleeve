@@ -44,6 +44,7 @@ import {Fence} from "./fence";
 class FenceGroup {
     spu
     skuList = []
+    fences = []
 
     /** wjp-flow：第六步：初始化fence-group中spu和skuList */
     constructor(spu) {
@@ -97,6 +98,7 @@ class FenceGroup {
             fences.push(fence)
         })
         console.log('完整的fences：', fences)
+        this.fences = fences
     }
 }
 

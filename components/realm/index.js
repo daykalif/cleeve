@@ -37,10 +37,18 @@ Component({
             const fenceGroup = new FenceGroup(spu)
             // fenceGroup.initFences1()
             fenceGroup.initFences()
+            /** wjp-flow：第十九步：绑定fenceGroup数据，供realm组件使用*/
+            this.bindInitData(fenceGroup)
         }
     },
 
 
     /** 组件的方法列表 */
-    methods: {}
+    methods: {
+        bindInitData(fenceGroup) {
+            this.setData({
+                fences: fenceGroup.fences
+            })
+        }
+    }
 })

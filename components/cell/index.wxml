@@ -1,0 +1,8 @@
+<!--components/cell/index.wxml-->
+
+<!-- wjp-flow：第二十四步：单个cell标签页 -->
+<view class="container">
+    <view class="inner-container">
+        <text>{{cell.title}}</text>
+    </view>
+</view>
