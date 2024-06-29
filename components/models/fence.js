@@ -12,14 +12,31 @@ class Fence {
     // valueTitles = []
     cells = []
     specs   // 一组fence数组，如：[金属灰, 青芒色, 橘黄色]
+    title
+    id
 
     constructor(specs) {
         this.specs = specs
+        this.title = specs[0].key  // key:'颜色'
+        this.id = specs[0].key_id  // key_id:1
     }
 
     /** wjp-flow：第十六步：将转置矩阵的 */
     init() {
+        this._initCells()
+    }
+
+    // 初始化Cells
+    _initCells() {
         this.specs.forEach(s => {
+            /** wjp-flow：第十八步：cells去重 */
+            const existed = this.cells.some(c => {
+                return c.id === s.value_id
+            })
+            if (existed) {
+                return
+            }
+
             // this.pushValueTitle(s.value)
             const cell = new Cell(s)
             this.cells.push(cell)
