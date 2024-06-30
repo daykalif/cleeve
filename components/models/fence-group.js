@@ -100,6 +100,16 @@ class FenceGroup {
         // console.log('完整的fences：', fences)
         this.fences = fences
     }
+
+    eachCell(cb) {
+        for (let i = 0; i < this.fences.length; i++) {
+            for (let j = 0; j < this.fences[i].cells.length; j++) {
+                const cell = this.fences[i].cells[j]
+                cb(cell, i, j)
+            }
+        }
+    }
+
 }
 
 export {
