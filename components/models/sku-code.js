@@ -23,6 +23,14 @@ class SkuCode {
         for (let i = 1; i <= length; i++) {
             /** wjp-flow：第二十九：segments记录一次组合*/
             const segments = combination(specCodeArray, i)
+
+            /**
+                // [["1-42"],["3-11"],["4-16"]]
+                // [["1-42", "3-11"],["1-42", "4-16"],["3-11", "4-16"]]
+                // [["1-42", "3-11", "4-16"]]
+                console.log('segments', segments);
+             */
+
             const newSegments = segments.map(segs => {
                 return segs.join('#')
             })
