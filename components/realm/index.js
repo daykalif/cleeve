@@ -1,6 +1,7 @@
 // components/realm/index.ts
 import {Spu} from "../../models/spu";
 import {FenceGroup} from "../models/fence-group";
+import {Judger} from "../models/judger";
 
 Component({
 
@@ -37,6 +38,10 @@ Component({
             const fenceGroup = new FenceGroup(spu)
             // fenceGroup.initFences1()
             fenceGroup.initFences()
+
+            /** wjp-flow：第三十一步：new Judger对象，计算出所有的可选sku组合*/
+            const judger = new Judger(fenceGroup)
+
             /** wjp-flow：第十九步：绑定fenceGroup数据，供realm组件使用*/
             this.bindInitData(fenceGroup)
         }
