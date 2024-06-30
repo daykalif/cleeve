@@ -1,6 +1,9 @@
+import {CellStatus} from "../../core/enum";
+
 class Cell {
     title
     id
+    status = CellStatus.WAITING
 
     /** wjp-flow：第十七步：创建cell */
     constructor(spec) {

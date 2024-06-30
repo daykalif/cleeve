@@ -17,3 +17,24 @@
     background-color: #ffffff;
     font-size: 24rpx;
 }
+
+.forbidden {
+    border: 2rpx dashed #bbbbbb;
+    color: #bbbbbb;
+}
+
+.s-outer {
+    border: 2rpx solid #157658;
+    color: #ffffff;
+}
+
+.s-inner {
+    background-color: #157658;
+}
+
+.img {
+    display: flex;
+    width: 44rpx;
+    height: 44rpx;
+    margin-right: 10rpx;
+}

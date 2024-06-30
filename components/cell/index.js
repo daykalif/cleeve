@@ -44,5 +44,11 @@ Component({
     /**
      * 组件的方法列表
      */
-    methods: {}
+    methods: {
+        onTap(event) {
+            this.triggerEvent('celltap', {
+                //  子组件向父组件传参
+            })
+        }
+    }
 })
