@@ -71,10 +71,10 @@ class FenceGroup {
     //     console.log(fences)
     // }
 
-    _createFence(element) {
-        const fence = new Fence()
-        return fence
-    }
+    // _createFence(element) {
+    //     const fence = new Fence()
+    //     return fence
+    // }
 
     /** wjp-flow：第八步：调用矩阵转置方法 */
     _createMatrix(skuList) {

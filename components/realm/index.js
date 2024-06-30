@@ -57,3 +57,100 @@ Component({
         }
     }
 })
+
+/**
+ * fenceGroup.fences的数据展示:
+ * [
+ *     {
+ *         "cells": [
+ *             {
+ *                 "title": "青芒色",
+ *                 "id": 42,
+ *                 "status": "waiting"
+ *             },
+ *             {
+ *                 "title": "橘黄色",
+ *                 "id": 44,
+ *                 "status": "waiting"
+ *             }
+ *         ],
+ *         "specs": [
+ *             {
+ *                 "key_id": 1,
+ *                 "key": "颜色",
+ *                 "value_id": 42,
+ *                 "value": "青芒色"
+ *             },
+ *             {
+ *                 "key_id": 1,
+ *                 "key": "颜色",
+ *                 "value_id": 44,
+ *                 "value": "橘黄色"
+ *             }
+ *         ],
+ *         "title": "颜色",
+ *         "id": 1
+ *     },
+ *     {
+ *         "cells": [
+ *             {
+ *                 "title": "圣斗士",
+ *                 "id": 11,
+ *                 "status": "waiting"
+ *             },
+ *             {
+ *                 "title": "七龙珠",
+ *                 "id": 9,
+ *                 "status": "waiting"
+ *             }
+ *         ],
+ *         "specs": [
+ *             {
+ *                 "key_id": 3,
+ *                 "key": "图案",
+ *                 "value_id": 11,
+ *                 "value": "圣斗士"
+ *             },
+ *             {
+ *                 "key_id": 3,
+ *                 "key": "图案",
+ *                 "value_id": 9,
+ *                 "value": "七龙珠"
+ *             }
+ *         ],
+ *         "title": "图案",
+ *         "id": 3
+ *     },
+ *     {
+ *         "cells": [
+ *             {
+ *                 "title": "大号  L",
+ *                 "id": 16,
+ *                 "status": "waiting"
+ *             },
+ *             {
+ *                 "title": "小号 S",
+ *                 "id": 14,
+ *                 "status": "waiting"
+ *             }
+ *         ],
+ *         "specs": [
+ *             {
+ *                 "key_id": 4,
+ *                 "key": "尺码",
+ *                 "value_id": 16,
+ *                 "value": "大号  L"
+ *             },
+ *             {
+ *                 "key_id": 4,
+ *                 "key": "尺码",
+ *                 "value_id": 14,
+ *                 "value": "小号 S"
+ *             }
+ *         ],
+ *         "title": "尺码",
+ *         "id": 4
+ *     }
+ * ]
+ */
+

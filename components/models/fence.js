@@ -11,7 +11,10 @@ import {Cell} from "./cell";
 class Fence {
     // valueTitles = []
     cells = []
-    specs   // 一组fence数组，如：[金属灰, 青芒色, 橘黄色]
+    specs   // 一组fence数组，如：[
+            //                      {key_id: 1, key: "颜色", value_id: 42, value: "青芒色"},
+            //                      {key_id: 1, key: "颜色", value_id: 44, value: "橘黄色"}
+            //                  ]
     title
     id
 
