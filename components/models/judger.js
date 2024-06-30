@@ -1,6 +1,7 @@
 import {SkuCode} from "./sku-code";
 import {CellStatus} from "../../core/enum";
 import {SkuPending} from "./sku-pending";
+import {Joiner} from "../../utils/joiner";
 
 /**
  * wjp-flow：第二十六：创建judger类，用于管理所有可选sku路径以及用户已选sku路径
@@ -33,7 +34,10 @@ class Judger {
 
     judge(cell, x, y) {
         this._changeCellStatus(cell, x, y)
-        this.fenceGroup.eachCell(this._changeOtherCellStatus)
+        this.fenceGroup.eachCell((cell, x, y) => {
+            const path = this._findPotentialPath(cell, x, y)
+            console.log('path', path)
+        })
     }
 
     /**
@@ -88,22 +92,30 @@ class Judger {
      *          2.对于某个Cell，它的潜在路径应该是，他自己加上其他行的已选Cell
      *          3.对于某个Cell，不需要考虑当前行其他Cell是否已选
      */
-    _changeOtherCellStatus(cell, x, y) {
-
-    }
 
     // 寻找潜在路径
     _findPotentialPath(cell, x, y) {
+        const joiner = new Joiner('#')
+
         for (let i = 0; i < this.fenceGroup.fences.length; i++) {
+            // 查找每一行，哪个元素是已选的，而不是当前行哪个元素是已选的，所以不传x
+            const selected = this.skuPending.findSelectedCellByX(i)
+
             // 当前行
             if (x === i) {
                 const cellCode = this._getCellCode(cell.spec)
+                joiner.join(cellCode)
             } else {
                 // 其他行
                 if (selected) {
+                    //  如果存在其他行，并且有已选元素，则需要加入到potential path中去
+                    const selectedCellCode = this._getCellCode(selected.spec)
+                    joiner.join(selectedCellCode)
                 }
             }
         }
+
+        return joiner.getStr()
     }
 
     _getCellCode(spec) {
