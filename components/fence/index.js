@@ -6,7 +6,8 @@ Component({
      */
     properties: {
         /** wjp-flow：第二十一步：定义属性fence */
-        fence: Object
+        fence: Object,
+        x: Number
     },
 
     /**

@@ -11,7 +11,9 @@ Component({
     },
 
     /** 组件的初始数据，组件自己定义的属性 */
-    data: {},
+    data: {
+        judger: Object
+    },
 
     /**
      * 获取组件属性数据有2种方法
@@ -40,6 +42,7 @@ Component({
 
             /** wjp-flow：第三十一步：new Judger对象，计算出所有的可选sku组合*/
             const judger = new Judger(fenceGroup)
+            this.data.judger = judger
 
             /** wjp-flow：第十九步：绑定fenceGroup数据，供realm组件使用*/
             this.bindInitData(fenceGroup)
@@ -56,8 +59,15 @@ Component({
         },
 
         onCellTap(event) {
-            const data = event.detail.cell
-            console.log('data', data);
+            const cell = event.detail.cell
+            const x = event.detail.x
+            const y = event.detail.y
+
+            const judger = this.data.judger
+            judger.judge(cell, x, y)
+            this.setData({
+                fences: judger.fenceGroup.fences
+            })
         }
     }
 })

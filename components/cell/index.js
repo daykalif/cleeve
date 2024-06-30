@@ -33,7 +33,9 @@ Component({
      */
     properties: {
         /** wjp-flow：第二十三步：定义属性cell */
-        cell: Object
+        cell: Object,
+        y: Number,
+        x: Number,
     },
 
     /**
@@ -49,6 +51,8 @@ Component({
             this.triggerEvent('celltap', {
                 //  子组件向父组件传参
                 cell: this.properties.cell,
+                x: this.properties.x,
+                y: this.properties.y
             }, {
                 bubbles: true,  // 开启冒泡
                 composed: true  // 跨越组件传参
