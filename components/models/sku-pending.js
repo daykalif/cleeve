@@ -2,9 +2,10 @@ import {Cell} from "./cell";
 
 /** 存储用户选择状态的类 */
 class SkuPending {
+    // 用户已选择的状态
     pending = []
 
-    constructor(size) {
+    constructor() {
 
     }
 
@@ -27,6 +28,14 @@ class SkuPending {
 
     findSelectedCellByX(x) {
         return this.pending[x]
+    }
+
+    isSelected(cell, x) {
+        const pendingCell = this.pending[x]
+        if (!pendingCell) {
+            return false
+        }
+        return cell.id === pendingCell.id
     }
 }
 

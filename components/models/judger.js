@@ -8,7 +8,7 @@ import {Joiner} from "../../utils/joiner";
  */
 class Judger {
     fenceGroup
-    // 已存在的sku路径
+    // 字典：已存在的sku路径
     pathDict = []
 
     constructor(fenceGroup) {
@@ -28,16 +28,30 @@ class Judger {
             /** wjp-flow：第三十步：循环调用SkuCode，并拆解sku组合 */
             const skuCode = new SkuCode(s.code)
             this.pathDict = this.pathDict.concat(skuCode.totalSegments)
-            console.log(this.pathDict);
         })
+        console.log(this.pathDict);
     }
 
     judge(cell, x, y) {
         this._changeCellStatus(cell, x, y)
         this.fenceGroup.eachCell((cell, x, y) => {
             const path = this._findPotentialPath(cell, x, y)
-            console.log('path', path)
+            // console.log('path', path)
+            if (!path) {
+                return
+            }
+            const isIn = this._isInDict(path)
+            if (isIn) {
+                this.fenceGroup.fences[x].cells[y].status = CellStatus.WAITING
+            } else {
+                this.fenceGroup.fences[x].cells[y].status = CellStatus.FORBIDDEN
+            }
         })
+    }
+
+    // 判断当前潜在路径是否在字典中
+    _isInDict(path) {
+        return this.pathDict.includes(path)
     }
 
     /**
@@ -94,7 +108,7 @@ class Judger {
      */
 
     // 寻找潜在路径
-    _findPotentialPath(cell, x, y) {
+    _findPotentialPath(cell, x) {
         const joiner = new Joiner('#')
 
         for (let i = 0; i < this.fenceGroup.fences.length; i++) {
@@ -103,6 +117,10 @@ class Judger {
 
             // 当前行
             if (x === i) {
+                // 当前行的已选cell需要跳过判断
+                if (this.skuPending.isSelected(cell, x)) {
+                    return
+                }
                 const cellCode = this._getCellCode(cell.spec)
                 joiner.join(cellCode)
             } else {
@@ -118,10 +136,12 @@ class Judger {
         return joiner.getStr()
     }
 
+    // 拼接一个cell code：key_id-value_id
     _getCellCode(spec) {
         return spec.key_id + '-' + spec.value_id
     }
 
+    // 点击cell，改变cell状态
     _changeCellStatus(cell, x, y) {
         // 用户执行正选操作
         if (cell.status === CellStatus.WAITING) {
@@ -131,7 +151,7 @@ class Judger {
         // 用户执行反选操作
         if (cell.status === CellStatus.SELECTED) {
             this.fenceGroup.fences[x].cells[y].status = CellStatus.WAITING
-            this.skuPending.removeCell(cell, x)
+            this.skuPending.removeCell(x)
         }
     }
 }
