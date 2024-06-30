@@ -48,6 +48,10 @@ Component({
         onTap(event) {
             this.triggerEvent('celltap', {
                 //  子组件向父组件传参
+                cell: this.properties.cell,
+            }, {
+                bubbles: true,  // 开启冒泡
+                composed: true  // 跨越组件传参
             })
         }
     }

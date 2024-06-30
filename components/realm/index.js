@@ -1,5 +1,4 @@
 // components/realm/index.ts
-import {Spu} from "../../models/spu";
 import {FenceGroup} from "../models/fence-group";
 import {Judger} from "../models/judger";
 
@@ -54,6 +53,11 @@ Component({
             this.setData({
                 fences: fenceGroup.fences
             })
+        },
+
+        onCellTap(event) {
+            const data = event.detail.cell
+            console.log('data', data);
         }
     }
 })
