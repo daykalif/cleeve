@@ -1,5 +1,6 @@
 import {SkuCode} from "./sku-code";
 import {CellStatus} from "../../core/enum";
+import {SkuPending} from "./sku-pending";
 
 /**
  * wjp-flow：第二十六：创建judger类，用于管理所有可选sku路径以及用户已选sku路径
@@ -12,6 +13,13 @@ class Judger {
     constructor(fenceGroup) {
         this.fenceGroup = fenceGroup
         this._initPathDict()
+        this._initSkuPending()
+    }
+
+    _initSkuPending() {
+        const specsLength = this.fenceGroup.fences.length
+        this.skuPending = new SkuPending(specsLength)
+
     }
 
     _initPathDict() {
@@ -84,12 +92,34 @@ class Judger {
 
     }
 
+    // 寻找潜在路径
+    _findPotentialPath(cell, x, y) {
+        for (let i = 0; i < this.fenceGroup.fences.length; i++) {
+            // 当前行
+            if (x === i) {
+                const cellCode = this._getCellCode(cell.spec)
+            } else {
+                // 其他行
+                if (selected) {
+                }
+            }
+        }
+    }
+
+    _getCellCode(spec) {
+        return spec.key_id + '-' + spec.value_id
+    }
+
     _changeCellStatus(cell, x, y) {
+        // 用户执行正选操作
         if (cell.status === CellStatus.WAITING) {
             this.fenceGroup.fences[x].cells[y].status = CellStatus.SELECTED
+            this.skuPending.insertCell(cell, x)
         }
+        // 用户执行反选操作
         if (cell.status === CellStatus.SELECTED) {
             this.fenceGroup.fences[x].cells[y].status = CellStatus.WAITING
+            this.skuPending.removeCell(cell, x)
         }
     }
 }
