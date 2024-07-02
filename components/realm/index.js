@@ -12,7 +12,8 @@ Component({
 
     /** 组件的初始数据，组件自己定义的属性 */
     data: {
-        judger: Object
+        judger: Object,
+        previewImg: String,
     },
 
     /**
@@ -44,6 +45,13 @@ Component({
             const judger = new Judger(fenceGroup)
             this.data.judger = judger
 
+            const defaultSku = fenceGroup.getDefaultSku()
+            if (defaultSku) {
+                this.bindSkuData(defaultSku)
+            } else {
+                this.bindSpuData()
+            }
+
             /** wjp-flow：第十九步：绑定fenceGroup数据，供realm组件使用*/
             this.bindInitData(fenceGroup)
         }
@@ -52,6 +60,27 @@ Component({
 
     /** 组件的方法列表 */
     methods: {
+        // 绑定spu数据
+        bindSpuData() {
+            const spu = this.properties.spu
+            this.setData({
+                previewImg: spu.img,
+                title: spu.title,
+                price: spu.price,
+                discountPrice: spu.discount_price,
+            })
+        },
+        // 绑定sku数据
+        bindSkuData(sku) {
+            this.setData({
+                previewImg: sku.img,
+                title: sku.title,
+                price: sku.price,
+                discountPrice: sku.discount_price,
+                stock: sku.stock,   // 库存
+            })
+        },
+
         bindInitData(fenceGroup) {
             this.setData({
                 fences: fenceGroup.fences
