@@ -52,29 +52,27 @@ class FenceGroup {
         this.skuList = spu.sku_list
     }
 
-    // initFences1() {
-    //     /** wjp-flow：第七步：调用矩阵处理方法 */
-    //     const matrix = this._createMatrix(this.skuList)
-    //     const fences = []
-    //     let currentJ = -1;
-    //
-    //     /** wjp-flow：第十二步：调用matrix的each方法，获取到期望的矩阵数据，保存于fences */
-    //     matrix.each((element, i, j) => {
-    //         // 开启一个新列，需要创建一个新的Fence
-    //         if (currentJ !== j) {
-    //             currentJ = j
-    //             fences[currentJ] = this._createFence(element)
-    //             // createFence
-    //         }
-    //         fences[currentJ].pushValueTitle(element.value)
-    //     })
-    //     console.log(fences)
-    // }
+    getDefaultSku() {
+        const defaultSkuId = this.spu.default_sku_id
+        if (!defaultSkuId) {
+            return
+        }
+        return this.skuList.find(s => s.id === defaultSkuId)
+    }
 
-    // _createFence(element) {
-    //     const fence = new Fence()
-    //     return fence
-    // }
+    // 通过cellId，修改cell状态
+    setCellStatusById(cellId, status) {
+        this.eachCell((cell) => {
+            if (cell.id === cellId) {
+                cell.status = status
+            }
+        })
+    }
+
+    // 通过x行，y列坐标,修改cell状态
+    setCelStatusByXY(x, y, status) {
+        this.fences[x].cells[y].status = status
+    }
 
     /** wjp-flow：第八步：调用矩阵转置方法 */
     _createMatrix(skuList) {
@@ -110,6 +108,29 @@ class FenceGroup {
         }
     }
 
+    // initFences1() {
+    //     /** wjp-flow：第七步：调用矩阵处理方法 */
+    //     const matrix = this._createMatrix(this.skuList)
+    //     const fences = []
+    //     let currentJ = -1;
+    //
+    //     /** wjp-flow：第十二步：调用matrix的each方法，获取到期望的矩阵数据，保存于fences */
+    //     matrix.each((element, i, j) => {
+    //         // 开启一个新列，需要创建一个新的Fence
+    //         if (currentJ !== j) {
+    //             currentJ = j
+    //             fences[currentJ] = this._createFence(element)
+    //             // createFence
+    //         }
+    //         fences[currentJ].pushValueTitle(element.value)
+    //     })
+    //     console.log(fences)
+    // }
+
+    // _createFence(element) {
+    //     const fence = new Fence()
+    //     return fence
+    // }
 }
 
 export {

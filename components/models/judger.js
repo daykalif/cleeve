@@ -13,27 +13,38 @@ class Judger {
 
     constructor(fenceGroup) {
         this.fenceGroup = fenceGroup
+        // 需要先初始化path dict
         this._initPathDict()
+        // 再初始化sku默认选中状态
         this._initSkuPending()
     }
 
+    // 进入详情页时，默认选中接口返回的sku作为默认选中项
     _initSkuPending() {
-        const specsLength = this.fenceGroup.fences.length
-        this.skuPending = new SkuPending(specsLength)
-
+        this.skuPending = new SkuPending()
+        const defaultSku = this.fenceGroup.getDefaultSku()
+        if (!defaultSku) {
+            return
+        }
+        this.skuPending.init(defaultSku)
+        this._initSelectedCell()
+        this.judge(null, null, null, true)
     }
 
-    _initPathDict() {
-        this.fenceGroup.spu.sku_list.forEach(s => {
-            /** wjp-flow：第三十步：循环调用SkuCode，并拆解sku组合 */
-            const skuCode = new SkuCode(s.code)
-            this.pathDict = this.pathDict.concat(skuCode.totalSegments)
+    // 初始化时遍历skuPending中的pending值，如果查找到匹配的cell，设置为选中状态
+    _initSelectedCell() {
+        this.skuPending.pending.forEach(cell => {
+            this.fenceGroup.setCellStatusById(cell.id, CellStatus.SELECTED)
         })
-        console.log(this.pathDict);
     }
 
-    judge(cell, x, y) {
-        this._changeCellStatus(cell, x, y)
+    // 判断cell状态
+    judge(cell, x, y, isInit = false) { // x：行号；y：列号
+        if (!isInit) {
+            // 负责判断一个cell是否为可选状态
+            this._changeCurrentCellStatus(cell, x, y)
+        }
+        // 负责判断一个cell为waiting还是forbidden状态
         this.fenceGroup.eachCell((cell, x, y) => {
             const path = this._findPotentialPath(cell, x, y)
             // console.log('path', path)
@@ -42,9 +53,9 @@ class Judger {
             }
             const isIn = this._isInDict(path)
             if (isIn) {
-                this.fenceGroup.fences[x].cells[y].status = CellStatus.WAITING
+                this.fenceGroup.setCelStatusByXY(x, y, CellStatus.WAITING)
             } else {
-                this.fenceGroup.fences[x].cells[y].status = CellStatus.FORBIDDEN
+                this.fenceGroup.setCelStatusByXY(x, y, CellStatus.FORBIDDEN)
             }
         })
     }
@@ -142,17 +153,27 @@ class Judger {
     }
 
     // 点击cell，改变cell状态
-    _changeCellStatus(cell, x, y) {
+    _changeCurrentCellStatus(cell, x, y) {
         // 用户执行正选操作
         if (cell.status === CellStatus.WAITING) {
-            this.fenceGroup.fences[x].cells[y].status = CellStatus.SELECTED
+            this.fenceGroup.setCelStatusByXY(x, y, CellStatus.SELECTED)
             this.skuPending.insertCell(cell, x)
         }
         // 用户执行反选操作
         if (cell.status === CellStatus.SELECTED) {
-            this.fenceGroup.fences[x].cells[y].status = CellStatus.WAITING
+            this.fenceGroup.setCelStatusByXY(x, y, CellStatus.WAITING)
             this.skuPending.removeCell(x)
         }
+    }
+
+    // 遍历sku_list，计算除当前code包含所有可拆解的sku code组合
+    _initPathDict() {
+        this.fenceGroup.spu.sku_list.forEach(s => {
+            /** wjp-flow：第三十步：循环调用SkuCode，并拆解sku组合 */
+            const skuCode = new SkuCode(s.code)
+            this.pathDict = this.pathDict.concat(skuCode.totalSegments)
+        })
+        console.log(this.pathDict);
     }
 }
 
