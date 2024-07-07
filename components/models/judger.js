@@ -1,3 +1,6 @@
+/**
+ * @file: 用于管理所有sku路径，以及用户已选sku路径
+ */
 import {SkuCode} from "./sku-code";
 import {CellStatus} from "../../core/enum";
 import {SkuPending} from "./sku-pending";
@@ -19,9 +22,20 @@ class Judger {
         this._initSkuPending()
     }
 
+    // 遍历sku_list，计算除当前code包含所有可拆解的sku code组合
+    _initPathDict() {
+        this.fenceGroup.spu.sku_list.forEach(s => {
+            /** wjp-flow：第三十步：循环调用SkuCode，并拆解sku组合 */
+            const skuCode = new SkuCode(s.code)
+            this.pathDict = this.pathDict.concat(skuCode.totalSegments)
+        })
+        console.log("可选择的sku组合路径:", this.pathDict);
+    }
+
     // 进入详情页时，默认选中接口返回的sku作为默认选中项
     _initSkuPending() {
-        this.skuPending = new SkuPending()
+        const specsLength = this.fenceGroup.fences.length
+        this.skuPending = new SkuPending(specsLength)
         const defaultSku = this.fenceGroup.getDefaultSku()
         if (!defaultSku) {
             return
@@ -166,14 +180,28 @@ class Judger {
         }
     }
 
-    // 遍历sku_list，计算除当前code包含所有可拆解的sku code组合
-    _initPathDict() {
-        this.fenceGroup.spu.sku_list.forEach(s => {
-            /** wjp-flow：第三十步：循环调用SkuCode，并拆解sku组合 */
-            const skuCode = new SkuCode(s.code)
-            this.pathDict = this.pathDict.concat(skuCode.totalSegments)
+    // 判断sku规格是否选择完整
+    isSkuIntact() {
+        return this.skuPending.isIntact()
+    }
+
+    // 获取一个确定的sku完整路径
+    getDeterminateSku() {
+        const code = this.skuPending.getSkuCode()
+        return this.fenceGroup.getSku(code)
+    }
+
+    // 获取当前已选规格值
+    getCurrentValues() {
+        return this.skuPending.getCurrentSpecValues()
+    }
+
+    // 判断当前未选规格名称
+    getMissingKeys() {
+        const missingKeysIndex = this.skuPending.getMissingSpecKeysIndex()
+        return missingKeysIndex.map(i => {
+            return this.fenceGroup.fences[i].title
         })
-        console.log(this.pathDict);
     }
 }
 

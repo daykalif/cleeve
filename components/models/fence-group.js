@@ -60,6 +60,12 @@ class FenceGroup {
         return this.skuList.find(s => s.id === defaultSkuId)
     }
 
+    getSku(skuCode) {
+        const fullSkuCode = this.spu.id + '$' + skuCode
+        const sku = this.spu.sku_list.find(s => s.code === fullSkuCode)
+        return sku ? sku : null
+    }
+
     // 通过cellId，修改cell状态
     setCellStatusById(cellId, status) {
         this.eachCell((cell) => {
@@ -95,7 +101,7 @@ class FenceGroup {
             fence.init()
             fences.push(fence)
         })
-        // console.log('完整的fences：', fences)
+        console.log('完整的fences：', fences)
         this.fences = fences
     }
 

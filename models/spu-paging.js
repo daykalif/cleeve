@@ -1,5 +1,5 @@
 /**
- * @file: spu的数据请求
+ * @file: spu的数据请求（瀑布流展示）
  */
 import {Paging} from "../utils/paging";
 

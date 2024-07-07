@@ -18,7 +18,7 @@ export const spuData = {
             "price": 77.76,
             "discount_price": null,
             "online": true,
-            "img": "",
+            "img": "https://gw.alicdn.com/imgextra/i4/666041203/O1CN01QxB8sX1Kl1R5m3NvG_!!0-item_pic.jpg_Q75.jpg_.webp",
             "title": "金属灰·七龙珠",
             "spu_id": 2,
             "category_id": 17,

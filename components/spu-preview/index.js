@@ -1,3 +1,6 @@
+/**
+ * @file: 瀑布流小卡片
+ */
 // components/spu-preview/index.ts
 
 Component({
