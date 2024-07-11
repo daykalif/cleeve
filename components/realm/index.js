@@ -3,6 +3,7 @@ import {FenceGroup} from "../models/fence-group";
 import {Judger} from "../models/judger";
 import {Spu} from "../../models/spu";
 import {Cell} from "../models/cell";
+import {Cart} from "../../models/cart";
 
 Component({
 
@@ -16,6 +17,7 @@ Component({
     data: {
         judger: Object,
         previewImg: String,
+        currentSkuCount: Cart.SKU_MIN_COUNT,
     },
 
     /**
@@ -55,6 +57,7 @@ Component({
                 noSpec: true,
             })
             this.bindSkuData(spu.sku_list[0])
+            this.setStockStatus(spu.sku_list[0].stock, this.data.currentSkuCount)
         },
         // 处理有规格情况
         processHasSpec(spu) {
@@ -64,12 +67,12 @@ Component({
             fenceGroup.initFences()
 
             /** wjp-flow：第三十一步：new Judger对象，计算出所有的可选sku组合*/
-            const judger = new Judger(fenceGroup);
-            this.data.judger = judger;
+            this.data.judger = new Judger(fenceGroup);
 
             const defaultSku = fenceGroup.getDefaultSku();
             if (defaultSku) {
                 this.bindSkuData(defaultSku);
+                this.setStockStatus(defaultSku.stock, this.data.currentSkuCount);
             } else {
                 this.bindSpuData();
             }
@@ -131,6 +134,7 @@ Component({
             const currentCount = event.detail.count
             this.data.currentSkuCount = currentCount
 
+            // 完整sku路径时才会校验库存
             if (this.data.judger.isSkuIntact()) {
                 const sku = this.data.judger.getDeterminateSku()
                 this.setStockStatus(sku.stock, currentCount)
