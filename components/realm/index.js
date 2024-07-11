@@ -114,6 +114,29 @@ Component({
             })
         },
 
+        // 判断当前数量是否超出库存量
+        setStockStatus(stock, currentCount) {
+            this.setData({
+                outStock: this.isOutOfStock(stock, currentCount)
+            })
+        },
+
+        // 比较选购库存量与当前库存量
+        isOutOfStock(stock, currentCount) {
+            return stock < currentCount
+        },
+
+        onSelectCount(event) {
+            // 数值编辑组件的count值
+            const currentCount = event.detail.count
+            this.data.currentSkuCount = currentCount
+
+            if (this.data.judger.isSkuIntact()) {
+                const sku = this.data.judger.getDeterminateSku()
+                this.setStockStatus(sku.stock, currentCount)
+            }
+        },
+
         // 点击cell单元格
         onCellTap(event) {
             const data = event.detail.cell
@@ -130,6 +153,7 @@ Component({
             if (skuIntact) {
                 const currentSku = judger.getDeterminateSku()
                 this.bindSkuData(currentSku)
+                this.setStockStatus(currentSku.stock, this.data.currentSkuCount)
             }
             this.bindTipData();
             this.bindFenceGroupData(judger.fenceGroup);
