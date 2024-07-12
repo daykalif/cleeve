@@ -20,6 +20,7 @@ class Fence {
 
     constructor(specs) {
         this.specs = specs
+        console.log('specs',specs);
         this.title = specs[0].key  // key:'颜色'
         this.id = specs[0].key_id  // key_id:1
     }
