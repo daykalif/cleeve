@@ -1,6 +1,7 @@
 // pages/detail/detail.ts
 import {Spu} from "../../models/spu";
 import {ShoppingWay} from "../../core/enum";
+import {SaleExplain} from "../../models/sale-explain";
 
 Page({
 
@@ -18,8 +19,12 @@ Page({
         /** wjp-flow：第二步：获取spu-preview component点击传入的pid，并通过pid请求数据 */
         const pid = options.pid
         const spu = await Spu.getDetail(pid)
+
+        const explain = await SaleExplain.getFixed()
+
         this.setData({
-            spu
+            spu,
+            explain
         })
     },
 

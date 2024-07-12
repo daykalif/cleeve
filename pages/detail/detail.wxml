@@ -1,5 +1,6 @@
 <!--pages/detail/detail.wxml-->
 <view>
+    <!--  商品轮播图  -->
     <swiper class="top"
             autoplay
             indicator-dots>
@@ -10,8 +11,10 @@
         </block>
     </swiper>
 
+    <!--  商品详情描述，以及分享功能  -->
     <s-spu-description spu="{{spu}}"></s-spu-description>
 
+    <!--  specContainer，展示已选规格  -->
     <view bind:tap="onAddToCart" wx:if="{{!specs.noSpec}}" class="sku-pending">
         <view class="specs">
             <text wx:if="{{!specs.skuIntact}}">请选择：</text>
@@ -22,6 +25,11 @@
         <view class="arrow-right">
             <l-icon name="right" color="#157658" size="24"></l-icon>
         </view>
+    </view>
+
+    <!--  商品补充说明  -->
+    <view class="explain">
+        <s-sale-explain texts="{{explain}}"></s-sale-explain>
     </view>
 </view>
 
