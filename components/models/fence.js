@@ -20,7 +20,7 @@ class Fence {
 
     constructor(specs) {
         this.specs = specs
-        console.log('specs',specs);
+        // console.log('specs', specs);
         this.title = specs[0].key  // key:'颜色'
         this.id = specs[0].key_id  // key_id:1
     }
@@ -45,6 +45,20 @@ class Fence {
             const cell = new Cell(s)
             this.cells.push(cell)
         })
+    }
+
+    setFenceSketch(skuList) {
+        this.cells.forEach(c => {
+            this._setCellSkuImg(c, skuList)
+        })
+    }
+
+    _setCellSkuImg(cell, skuList) {
+        const specCode = cell.getCellCode()
+        const matchedSku = skuList.find(s => s.code.includes(specCode))
+        if (matchedSku) {
+            cell.skuImg = matchedSku.img
+        }
     }
 
     // /** wjp-flow：第十步：实现fence, 此处的fence暂时只以title作为内容创建*/

@@ -9,6 +9,7 @@ class Cell {
     id
     status = CellStatus.WAITING
     spec
+    skuImg
 
     /** wjp-flow：第十七步：创建cell */
     constructor(spec) {
