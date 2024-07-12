@@ -1,7 +1,9 @@
 <!--pages/detail/detail.wxml-->
 
-<!-- wjp-flow：第三步：在detail.json中引用realm组件，并定义名称s-realm -->
-<s-realm spu="{{spu}}"></s-realm>
+<l-popup content-align="bottom" show="{{showRealm}}">
+    <!-- wjp-flow：第三步：在detail.json中引用realm组件，并定义名称s-realm -->
+    <s-realm spu="{{spu}}"></s-realm>
+</l-popup>
 
 <s-tabbar class="tabbar"
           bind:gotohome="onGotoHome"
