@@ -1,3 +1,21 @@
 page {
     background-color: #f5f5f5;
 }
+
+/* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+@font-face {
+    font-family: 'sleeve';  /* Project id 4618761 */
+    src: url('//at.alicdn.com/t/c/font_4618761_ykhuidq1wv.woff2?t=1720755256325') format('woff2'),
+    url('//at.alicdn.com/t/c/font_4618761_ykhuidq1wv.woff?t=1720755256325') format('woff'),
+    url('//at.alicdn.com/t/c/font_4618761_ykhuidq1wv.ttf?t=1720755256325') format('truetype');
+}
+
+.sleeve{
+    font-family: sleeve !important;
+    color:#157658 !important;
+}
+
+/** 自定义图标名称 */
+.l-icon-wjp-home:before{
+    content:"\e61a"
+}
