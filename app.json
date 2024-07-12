@@ -31,6 +31,7 @@
     "l-tag": "/miniprogram_npm/lin-ui/tag/index",
     "l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index",
     "s-spu-preview": "/components/spu-preview/index",
-    "l-icon": "/miniprogram_npm/lin-ui/icon/index"
+    "l-icon": "/miniprogram_npm/lin-ui/icon/index",
+    "l-badge": "/miniprogram_npm/lin-ui/badge/index"
   }
 }
