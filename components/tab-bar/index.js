@@ -22,6 +22,7 @@ Component({
             this.triggerEvent('gotocart')
         },
 
+        // step2: tigger点击事件类型
         onAddToCart(event) {
             this.triggerEvent('addtocart')
         },

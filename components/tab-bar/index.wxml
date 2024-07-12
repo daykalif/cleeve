@@ -16,6 +16,7 @@
         </view>
     </view>
 
+    <!-- step1: 底部组件增加 “加入购物车” 和 “立即购买” 按钮，并绑定点击事件-->
     <view bind:tap="onAddToCart" class="cart btn-font">
         <text>加入购物车</text>
     </view>

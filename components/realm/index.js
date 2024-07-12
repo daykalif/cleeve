@@ -11,6 +11,8 @@ Component({
     properties: {
         /** wjp-flow：第四步：realm中定义接收数据的字段spu */
         spu: Object,
+        // step6: realm中定义接收用户点击的字段：“加入购物车”/“立即购买”
+        orderWay: String,
     },
 
     /** 组件的初始数据，组件自己定义的属性 */

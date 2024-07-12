@@ -23,6 +23,7 @@ Page({
         })
     },
 
+    // step4: 设置orderWay
     onAddToCart(event) {
         this.setData({
             showRealm: true,
