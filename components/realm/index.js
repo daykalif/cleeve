@@ -183,6 +183,51 @@ Component({
                 })
             }
         },
+
+        // 用户点击realm组件中的"加入购物车"，触发的事件
+        onBuyOrCart(event) {
+            // 判断商品是否有规格
+            if (Spu.isNoSpec(this.properties.spu)) {
+                this.shoppingNoSpec();
+            } else {
+                this.shoppingVarious();
+            }
+        },
+
+        shoppingNoSpec() {
+            this._triggerShoppingEvent(this.getNoSpecSku())
+        },
+
+        // 将无规格sku加入购物车
+        getNoSpecSku() {
+            return this.properties.spu.sku_list[0]
+        },
+
+        // 将用户确定的sku加入购物车
+        shoppingVarious() {
+            const intact = this.data.judger.isSkuIntact();
+            if (!intact) {
+                // 获取用户未选择的规格文本，如用户未选择：“颜色”
+                const missKeys = this.data.judger.getMissingKeys();
+                wx.showToast({
+                    icon: 'none',
+                    title: `请选择：${missKeys.join('，')}`,
+                    duration: 3000
+                });
+                return;
+            }
+            this._triggerShoppingEvent(this.data.judger.getDeterminateSku());
+        },
+
+        // 触发加入购物车事件
+        _triggerShoppingEvent(sku) {
+            this.triggerEvent('shopping', {
+                orderWay: this.properties.orderWay,
+                spuId: this.properties.spu.spuId,
+                skuId: sku,
+                skuCount: this.data.currentSkuCount,
+            })
+        },
     }
 })
 
