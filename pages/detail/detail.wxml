@@ -1,5 +1,5 @@
 <!--pages/detail/detail.wxml-->
-<view>
+<scroll-view style="height:{{h}}rpx;" scroll-y>
     <!--  商品轮播图  -->
     <swiper class="top"
             autoplay
@@ -38,7 +38,7 @@
             <image mode="widthFix" class="detail-img" src="{{item.img}}"></image>
         </block>
     </view>
-</view>
+</scroll-view>
 
 <l-popup content-align="bottom" show="{{showRealm}}">
     <!-- wjp-flow：第三步：在detail.json中引用realm组件，并定义名称s-realm -->
