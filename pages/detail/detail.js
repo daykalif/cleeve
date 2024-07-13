@@ -65,6 +65,10 @@ Page({
         })
     },
 
+    onShopping(event) {
+        console.log(event);
+    },
+
     onReady: function () {
     },
 

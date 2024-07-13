@@ -43,7 +43,7 @@
 <l-popup content-align="bottom" show="{{showRealm}}">
     <!-- wjp-flow：第三步：在detail.json中引用realm组件，并定义名称s-realm -->
     <!-- step5: 将orderWay传给realm组件，用于判断当前应展示 “加入购物车” / “立即购买” -->
-    <s-realm bind:specchange="onSpecChange" order-way="{{orderWay}}" spu="{{spu}}"></s-realm>
+    <s-realm bind:shopping="onShopping" bind:specchange="onSpecChange" order-way="{{orderWay}}" spu="{{spu}}"></s-realm>
 </l-popup>
 
 <!-- step3: detail页面监听 addtocart / buy 事件，并触发 onGotoCart / onAddToCart 事件-->

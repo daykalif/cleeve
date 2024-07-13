@@ -137,10 +137,14 @@ Component({
             const currentCount = event.detail.count
             this.data.currentSkuCount = currentCount
 
-            // 完整sku路径时才会校验库存
-            if (this.data.judger.isSkuIntact()) {
-                const sku = this.data.judger.getDeterminateSku()
-                this.setStockStatus(sku.stock, currentCount)
+            if (this.noSpec()) {
+                this.setStockStatus(this.getNoSpecSku().stock, currentCount);
+            } else {
+                // 完整sku路径时才会校验库存
+                if (this.data.judger.isSkuIntact()) {
+                    const sku = this.data.judger.getDeterminateSku()
+                    this.setStockStatus(sku.stock, currentCount)
+                }
             }
         },
 
@@ -187,11 +191,17 @@ Component({
         // 用户点击realm组件中的"加入购物车"，触发的事件
         onBuyOrCart(event) {
             // 判断商品是否有规格
-            if (Spu.isNoSpec(this.properties.spu)) {
+            if (this.noSpec()) {
                 this.shoppingNoSpec();
             } else {
                 this.shoppingVarious();
             }
+        },
+
+        // 判断spu是否无规格
+        noSpec() {
+            const spu = this.properties.spu;
+            return Spu.isNoSpec(spu);
         },
 
         shoppingNoSpec() {
@@ -223,7 +233,7 @@ Component({
         _triggerShoppingEvent(sku) {
             this.triggerEvent('shopping', {
                 orderWay: this.properties.orderWay,
-                spuId: this.properties.spu.spuId,
+                spuId: this.properties.spu.id,
                 skuId: sku,
                 skuCount: this.data.currentSkuCount,
             })
