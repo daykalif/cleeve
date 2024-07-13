@@ -1,66 +1,70 @@
-// pages/search/search.ts
+// pages/search/search.js
+import {HistoryKeyword} from "../../models/history-keyword";
+import {Tag} from "../../models/tag";
+import {Search} from "../../models/search";
+import {showToast} from "../../utils/ui";
+
+const history = new HistoryKeyword();
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+    data: {},
 
-  },
+    onLoad: async function (options) {
+        const historyTags = history.get();
+        const hotTags = await Tag.getSearchTags();
+        this.setData({
+            historyTags,
+            hotTags
+        })
+    },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad() {
+    async onSearch(event) {
+        this.setData({
+            search: true,
+            items: []
+        });
+        // 搜索框中的keyword 或者 点击tag的keyword
+        const keyword = event.detail.value || event.detail.name;
+        if (!keyword) {
+            showToast('请输入关键字');
+            return
+        }
+        history.save(keyword);
 
-  },
+        this.setData({
+            historyTags: history.get()
+        });
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
+        const paging = Search.search(keyword);
+        // 使用lin-ui loading组件
+        wx.lin.showLoading({
+            color: '#157658',
+            type: 'flash',
+            fullScreen: true
+        });
+        const data = await paging.getMoreData();
+        wx.lin.hideLoading();
+        this.bindItems(data)
+    },
 
-  },
+    onCancel(event) {
+        this.setData({
+            search: false
+        })
+    },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
+    bindItems(data) {
+        if (data.accumulator.length !== 0) {
+            this.setData({
+                items: data.accumulator
+            })
+        }
+    },
 
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
-})
+    onDeleteHistory(event) {
+        history.clear();
+        this.setData({
+            historyTags: []
+        })
+    }
+});
