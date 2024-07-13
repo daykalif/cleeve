@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "page：分类",
+          "pathName": "pages/category/category",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "无规格",
           "pathName": "pages/detail/detail",
           "query": "pid=11",

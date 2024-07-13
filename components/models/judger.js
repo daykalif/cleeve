@@ -29,7 +29,7 @@ class Judger {
             const skuCode = new SkuCode(s.code)
             this.pathDict = this.pathDict.concat(skuCode.totalSegments)
         })
-        console.log("可选择的sku组合路径:", this.pathDict);
+        // console.log("可选择的sku组合路径:", this.pathDict);
     }
 
     // 进入详情页时，默认选中接口返回的sku作为默认选中项

@@ -1,1 +1,27 @@
 /* pages/category/category.wxss */
+
+/* 覆盖page底色 */
+page {
+    background-color: #ffffff;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-btn {
+    background-color: #f1f1f1 !important;
+    color: #C4C9D2 !important;
+    font-size: 24rpx !important;
+    font-weight: 400 !important;
+    border-radius: 4rpx !important;
+}

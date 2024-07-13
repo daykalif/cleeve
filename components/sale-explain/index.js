@@ -16,7 +16,6 @@ Component({
 
     observers: {
         'texts': function (texts) {
-            console.log('texts',texts)
             this.setData({
                 _texts: texts
             })
