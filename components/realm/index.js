@@ -234,7 +234,7 @@ Component({
             this.triggerEvent('shopping', {
                 orderWay: this.properties.orderWay,
                 spuId: this.properties.spu.id,
-                skuId: sku,
+                sku: sku,
                 skuCount: this.data.currentSkuCount,
             })
         },

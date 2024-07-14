@@ -48,6 +48,7 @@
 
 <!-- step3: detail页面监听 addtocart / buy 事件，并触发 onGotoCart / onAddToCart 事件-->
 <s-tabbar class="tabbar"
+          cart-item-count="{{cartItemCount}}"
           bind:gotohome="onGotoHome"
           bind:gotocart="onGotoCart"
           bind:addtocart="onAddToCart"

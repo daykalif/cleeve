@@ -26,19 +26,31 @@ Page({
         const cartItems = cart.getAllCartItemFromLocal().items;
         if (cart.isEmpty()) {
             this.empty();
+            return;
         }
         this.setData({
             cartItems
         });
+        this.notEmpty();
     },
 
     empty() {
         this.setData({
             isEmpty: true,
         });
-        // 购物车tab上的红点（小程序内置的，控制红点出现的位置；0:首页、1:分类、2:购物车、3:我的）
+        // 隐藏购物车tab上的红点（小程序内置的，控制红点出现的位置；0:首页、1:分类、2:购物车、3:我的）
         wx.hideTabBarRedDot({
             index: 2
         });
-    }
+    },
+
+    notEmpty() {
+        this.setData({
+            isEmpty: false,
+        });
+        // 显示购物车tab上的红点（小程序内置的，控制红点出现的位置；0:首页、1:分类、2:购物车、3:我的）
+        wx.showTabBarRedDot({
+            index: 2
+        });
+    },
 })

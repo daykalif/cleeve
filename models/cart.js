@@ -133,6 +133,11 @@ class Cart {
             return item.skuId === skuId;
         });
     }
+
+    /** 获取购物车数量 */
+    getCartItemCount() {
+        return this._getCartData().items.length;
+    }
 }
 
 export {
