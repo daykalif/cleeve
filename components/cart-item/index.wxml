@@ -46,14 +46,14 @@
                 >
                 </l-price>
                 <s-counter bind:linout="onOutNumber"
-                           max="{{cartItem.sku.stock}}"
+                           max="{{stock}}"
                            bind:lintap="onSelectCount"
-                           count="{{cartItem.count}}">
+                           count="{{skuCount}}">
                 </s-counter>
             </view>
         </view>
-
-        <!-- 蒙层 -->
-        <view wx:if="{{soldOut || !online}}" class="sold-out"></view>
     </view>
+
+    <!-- 蒙层 -->
+    <view wx:if="{{soldOut || !online}}" class="sold-out"></view>
 </view>

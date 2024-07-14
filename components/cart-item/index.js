@@ -20,6 +20,8 @@ Component({
         soldOut: Boolean,
         online: Boolean,
         stockPinch: Boolean,
+        stock: Cart.SKU_MAX_COUNT,
+        skuCount: 1,
     },
 
     observers: {
@@ -39,6 +41,8 @@ Component({
                 soldOut,
                 online,
                 stockPinch,
+                stock: cartItem.sku.stock,
+                skuCount: cartItem.count,
             });
         }
     },

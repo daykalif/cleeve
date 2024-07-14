@@ -153,6 +153,8 @@
 
 .sold-out {
     position: absolute;
-    height: 160rpx;
-    width: 620rpx;
+    background-color: #ffffff;
+    height: 100%;
+    width: 100%;
+    opacity: 0.6;
 }
