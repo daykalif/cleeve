@@ -1,2 +1,4 @@
 <!--components/cart-item/index.wxml-->
-<text>components/cart-item/index.wxml</text>
+<view class="container" slot="left" >
+
+</view>
