@@ -138,6 +138,21 @@ class Cart {
     getCartItemCount() {
         return this._getCartData().items.length;
     }
+
+    /** 判断一个cart的sku是否售罄 */
+    static isSoldOut(item) {
+        return item.sku.stock === 0;
+    }
+
+    /** 判断一个cart的sku是否上架 */
+    static isOnline(item) {
+        return item.sku.online;
+    }
+
+    /** 判断一个cart的sku库存量是否小于10 */
+    static stockPinch(item) {
+        return item.sku.stock < 10 && item.sku.online && item.sku.stock > 0
+    }
 }
 
 export {
