@@ -24,6 +24,10 @@ class Cart {
         if (this.beyondMaxCartItemCount()) {
             throw new Error('超过购物车最大数量');
         }
+        // 将商品推入购物车
+        this._pushItem(newItem);
+        // 将购物车数据同步至缓存
+        this._refreshStorage();
     }
 
     /** 判断购物车数量是否超限 */
@@ -68,9 +72,22 @@ class Cart {
         return cartData;
     }
 
-    /** 寻找相同的cartItem */
-    findEqualItem() {
+    /** 寻找购物车中相同的cartItem */
+    findEqualItem(skuId) {
+        let oldItem = null;
+        const items = this._getCartData().items;
+        for (let i = 0; i < items.length; i++) {
+            if (this._isEqualItem(items[i], skuId)) {
+                oldItem = items[i];
+                break;
+            }
+        }
+        return oldItem;
+    }
 
+    /** 判等 */
+    _isEqualItem(oldItem, skuId) {
+        return oldItem.skuId === skuId;
     }
 
     /** 对相同cartItem进行数量的增加 */
@@ -84,6 +101,27 @@ class Cart {
         if (item.count >= Cart.SKU_MAX_COUNT) {
             item.count = Cart.SKU_MAX_COUNT;
         }
+    }
+
+    /** 刷新缓存（将购物车数据同步至缓存） */
+    _refreshStorage() {
+        wx.setStorageSync(Cart.STORAGE_KEY, this._cartData);
+    }
+
+    /** 删除购物车商品 */
+    removeItem(skuId) {
+        const oldItemIndex = this._findEqualItemIndex(skuId);
+        const cartData = this._getCartData();
+        cartData.items.splice(oldItemIndex, 1);
+        this._refreshStorage();
+    }
+
+    /** 寻找cartItem在购物车中序号 */
+    _findEqualItemIndex(skuId) {
+        const cartData = this._getCartData();
+        return cartData.items.findIndex(item => {
+            return item.skuId === skuId;
+        });
     }
 }
 
