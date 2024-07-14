@@ -7,7 +7,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        cartItems: []
+        cartItems: [],
+        isEmpty: false,
     },
 
     /**
@@ -23,8 +24,21 @@ Page({
     onShow() {
         const cart = new Cart();
         const cartItems = cart.getAllCartItemFromLocal().items;
+        if (cart.isEmpty()) {
+            this.empty();
+        }
         this.setData({
             cartItems
         });
     },
+
+    empty() {
+        this.setData({
+            isEmpty: true,
+        });
+        // 购物车tab上的红点（小程序内置的，控制红点出现的位置；0:首页、1:分类、2:购物车、3:我的）
+        wx.hideTabBarRedDot({
+            index: 2
+        });
+    }
 })

@@ -9,3 +9,16 @@
         </s-cart-item>
     </block>
 </view>
+
+<view class="container">
+    <l-status-show wx:if="{{isEmpty}}"
+                   l-image-class="image"
+                   l-button-class="button"
+                   l-describe-class="describe"
+                   bind:lintap="onClickTap"
+                   show="{{true}}"
+                   image="/imgs/empty.png"
+                   button-text="去逛逛"
+                   describe="购物车空空如也，去逛逛吧!">
+    </l-status-show>
+</view>

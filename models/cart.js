@@ -23,6 +23,12 @@ class Cart {
         return this._getCartData();
     }
 
+    /** 判断购物车是否为空 */
+    isEmpty() {
+        const cartData = this._getCartData();
+        return cartData.items.length === 0;
+    }
+
     /** 向购物车中添加商品 */
     addItem(newItem) {
         if (this.beyondMaxCartItemCount()) {
