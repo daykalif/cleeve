@@ -19,6 +19,10 @@ class Cart {
         return this;
     }
 
+    getAllCartItemFromLocal() {
+        return this._getCartData();
+    }
+
     /** 向购物车中添加商品 */
     addItem(newItem) {
         if (this.beyondMaxCartItemCount()) {
