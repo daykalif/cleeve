@@ -1,4 +1,21 @@
 <!--components/cart-item/index.wxml-->
-<view class="container" slot="left" >
+<view class="container" slot="left">
+    <view class="checkbox">
+        <s-checkbox checked="{{cartItem.checked}}"></s-checkbox>
+    </view>
 
+    <view class="sku-container">
+        <view class="image-container">
+            <view wx:if="{{!online}}" class="image-sold-out">
+                <text>下 架</text>
+            </view>
+            <view wx:elif="{{soldOut}}" class="image-sold-out">
+                <text>售 罄</text>
+            </view>
+            <view wx:elif="{{s.shortage(cartItem.sku.stock)}}" class="image-stock-pinch">
+                <text>仅剩{{cartItem.sku.stock}}件</text>
+            </view>
+            <image mode="aspectFit" class="img" src="{{cartItem.sku.img}}"></image>
+        </view>
+    </view>
 </view>

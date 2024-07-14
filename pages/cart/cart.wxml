@@ -2,6 +2,7 @@
 <view wx:if="{{!isEmpty}}" class="container">
     <block wx:for="{{cartItems}}">
         <s-cart-item
+                cartItem="{{item}}"
                 bind:overflow="onOverflow"
                 bind:itemdelete="onDeleteItem"
                 bind:countfloat="onCountFloat"

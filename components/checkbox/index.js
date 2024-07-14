@@ -1,4 +1,4 @@
-// components/check-box/index.ts
+// components/checkbox/index.ts
 Component({
     /**
      * 组件的属性列表

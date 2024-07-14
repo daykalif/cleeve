@@ -1,4 +1,4 @@
-/* components/check-box/index.wxss */
+/* components/checkbox/index.wxss */
 .container {
     width: 40rpx;
     height: 40rpx;
