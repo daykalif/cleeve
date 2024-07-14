@@ -1,5 +1,6 @@
 // components/cart-item/index.ts
 import {Cart} from "../../models/cart";
+import {parseSpecValue} from "../../utils/sku";
 
 Component({
 
@@ -26,11 +27,14 @@ Component({
             if (!cartItem) {
                 return;
             }
+            // 将规格合并成一个字符串
+            const specStr = parseSpecValue(cartItem.sku.specs);
             const discount = !!cartItem.sku.discount_price;
             const soldOut = Cart.isSoldOut(cartItem);
             const online = Cart.isOnline(cartItem);
             const stockPinch = Cart.stockPinch(cartItem);
             this.setData({
+                specStr,
                 discount,
                 soldOut,
                 online,

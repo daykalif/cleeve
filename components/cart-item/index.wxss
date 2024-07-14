@@ -7,6 +7,11 @@
     flex-direction: row;
     padding: 30rpx;
     border-top: 2rpx solid #f3f3f3;
+    align-items: center;
+    background-color: #ffffff;
+    margin-top: 5rpx;
+    position: relative;
+    margin-bottom: -5rpx;
 }
 
 .checkbox {
@@ -18,7 +23,6 @@
 }
 
 .sku-container {
-    height: 160px;
     flex: 1 1 auto;
     display: flex;
     flex-direction: row;
@@ -29,6 +33,7 @@
     height: 160rpx;
     width: 160rpx;
     margin-right: 20rpx;
+    display: inline-table;
 }
 
 .img {
@@ -39,6 +44,20 @@
 .left {
     height: 100%;
     width: 100%;
+}
+
+.right-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px 0 0;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .image-sold-out {
@@ -69,6 +88,68 @@
     color: #ffffff;
     opacity: 0.7;
 }
+
+.discount-tag {
+    margin-right: 16rpx;
+    font-size: 18rpx;
+    padding-right: 6rpx;
+    padding-left: 6rpx;
+    width: 36rpx !important;
+    flex-wrap: nowrap !important;
+}
+
+.title {
+    font-weight: 400;
+    font-size: 26rpx;
+    color: #333333;
+    line-height: 40rpx;
+}
+
+.spec {
+    margin-top: 6px;
+    line-height: 20rpx;
+}
+
+.spec text {
+    display: inline-flex;
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+    flex-direction: row;
+    align-items: center;
+    height: 36rpx;
+    background-color: #f3f3f3;
+    color: #999999;
+    font-size: 20rpx;
+}
+
+.l_tag {
+    background-color: #DCEBE6 !important;
+    color: #167658 !important;
+}
+
+.price-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.slide {
+    width: 200rpx;
+    height: 220rpx;
+    color: #ffffff;
+    background-color: #9E2731;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.disabled {
+    opacity: 0.5;
+}
+
 
 .sold-out {
     position: absolute;
