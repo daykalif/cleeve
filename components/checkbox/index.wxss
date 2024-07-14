@@ -9,19 +9,14 @@
     justify-content: center;
 }
 
-.bg-checked {
-    background-color: #157658;
+.iconfont {
+    font-family: sleeve, serif !important;
 }
 
-.bg-unchecked {
-    background-color: #DCEBE6;
-    border: 2px solid #157658;
+.checked {
+    color: #157658 !important;
 }
 
-.sleeve {
-    font-family: sleeve !important;
-    font-size: 7rpx;
-    font-style: normal;
-    color: #ffffff !important;
-    line-height: 28rpx;
+.unchecked {
+    color: #DCEBE6 !important;
 }

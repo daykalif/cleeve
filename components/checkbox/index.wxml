@@ -1,5 +1,5 @@
 <!--components/checkbox/index.wxml-->
-<view bind:tap="onCheck" class="container {{checked ? 'bg-checked' : 'bg-unchecked'}}">
-    <l-icon wx:if="{{checked}}" name="check" size="28" l-class="sleeve"></l-icon>
+<view class="container" bind:tap="onCheck">
+    <l-icon l-class="iconfont {{checked ? 'checked' : 'unchecked'}}" name="check"></l-icon>
 </view>
 
