@@ -153,6 +153,37 @@ class Cart {
     static stockPinch(item) {
         return item.sku.stock < 10 && item.sku.online && item.sku.stock > 0
     }
+
+    /** 更新cartItem的checkbox状态 */
+    checkItem(skuId) {
+        const oldItem = this.findEqualItem(skuId);
+        oldItem.checked = !oldItem.checked;
+        this._refreshStorage();
+    }
+
+    /** 模型类中判断cartItems是否全部选中 */
+    isAllChecked() {
+        let allChecked = true;
+        const cartItems = this._getCartData().items;
+        for (let item of cartItems) {
+            if (!item.checked) {
+                allChecked = false;
+                break;
+            }
+        }
+        return allChecked;
+    }
+
+    /** 点击全选按钮，更新缓存 */
+    checkAll(checked) {
+        const cartData = this._getCartData();
+        // 改变代理对象_cartData的checked状态
+        cartData.items.forEach(item => {
+            item.checked = checked;
+        });
+        // 改变缓存中checked状态
+        this._refreshStorage();
+    }
 }
 
 export {

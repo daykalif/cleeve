@@ -2,6 +2,7 @@
 import {Cart} from "../../models/cart";
 import {parseSpecValue} from "../../utils/sku";
 
+const cart = new Cart();
 Component({
 
     /**
@@ -47,8 +48,7 @@ Component({
     methods: {
         /** 点击购物车删除按钮时，触发的事件 */
         onDelete(event) {
-            let skuId = this.properties.cartItem.sku.id;
-            let cart = new Cart();
+            let skuId = this.properties.cartItem.skuId;
             cart.removeItem(skuId);
             this.setData({
                 cartItem: null
@@ -56,5 +56,13 @@ Component({
             // 抛出删除事件，供父组件计算总价
             this.triggerEvent("itemdelete", {skuId});
         },
+
+        /** 勾选/取消勾选 */
+        checkedItem(event) {
+            const checked = event.detail.checked;
+            cart.checkItem(this.properties.cartItem.skuId);
+            this.properties.cartItem.checked = checked;
+            this.triggerEvent("itemcheck", {});
+        }
     }
 })

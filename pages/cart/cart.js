@@ -1,6 +1,7 @@
 // pages/cart/cart.ts
 import {Cart} from "../../models/cart";
 
+const cart = new Cart();
 Page({
 
     /**
@@ -9,6 +10,7 @@ Page({
     data: {
         cartItems: [],
         isEmpty: false,
+        allChecked: false,
     },
 
     /**
@@ -23,6 +25,7 @@ Page({
      */
     onShow() {
         const cart = new Cart();
+        // cartItems来自cart类中的_cartData
         const cartItems = cart.getAllCartItemFromLocal().items;
         if (cart.isEmpty()) {
             this.empty();
@@ -32,6 +35,8 @@ Page({
             cartItems
         });
         this.notEmpty();
+        // 切换购物车tab显隐时，需要刷新全选状态
+        this.isAllChecked();
     },
 
     empty() {
@@ -53,4 +58,31 @@ Page({
             index: 2
         });
     },
+
+    // 缓存中判断所有cartItem是否选中
+    isAllChecked() {
+        const allChecked = cart.isAllChecked();
+        this.setData({
+            allChecked
+        });
+    },
+
+    // cartItem点击checkbox后，设置全选状态
+    onSingleCheck() {
+        this.isAllChecked();
+    },
+
+    // 删除cartItem后，设置全选状态
+    onDeleteItem() {
+        this.isAllChecked();
+    },
+
+    // 点击全选状态
+    onCheckAll(event) {
+        const checked = event.detail.checked;
+        cart.checkAll(checked);
+        this.setData({
+            cartItems: this.data.cartItems
+        });
+    }
 })
