@@ -1,5 +1,6 @@
 // pages/cart/cart.ts
 import {Cart} from "../../models/cart";
+import {Calculator} from "../../models/calculator";
 
 const cart = new Cart();
 Page({
@@ -11,6 +12,8 @@ Page({
         cartItems: [],
         isEmpty: false,
         allChecked: false,
+        totalPrice: 0,
+        totalSkuCount: 0,
     },
 
     /**
@@ -37,6 +40,8 @@ Page({
         this.notEmpty();
         // 切换购物车tab显隐时，需要刷新全选状态
         this.isAllChecked();
+        // 计算购物车数量和总价
+        this.refreshCartData();
     },
 
     empty() {
@@ -84,5 +89,26 @@ Page({
         this.setData({
             cartItems: this.data.cartItems
         });
-    }
+    },
+
+    // 购物车数量，总价的计算
+    refreshCartData() {
+        // 获取所有勾选的cartItems
+        const cartItems = cart.getCheckedItems();
+
+        // 只需要计算勾选的cartItem的数量总和和价格总和
+        const calculator = new Calculator(cartItems);
+        calculator.calc();
+        this.setCalcData(calculator);
+    },
+
+    // 绑定数据
+    setCalcData(calculator) {
+        const totalPrice = calculator.getTotalPrice();
+        const totalSkuCount = calculator.getTotalSkuCount();
+        this.setData({
+            totalPrice,
+            totalSkuCount,
+        });
+    },
 })

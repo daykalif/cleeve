@@ -184,6 +184,36 @@ class Cart {
         // 改变缓存中checked状态
         this._refreshStorage();
     }
+
+    /** 获取所有勾选的cart items */
+    getCheckedItems() {
+        const cartItems = this._getCartData().items;
+        const checkedCartItems = [];
+        cartItems.forEach(item => {
+            if (item.checked) {
+                checkedCartItems.push(item);
+            }
+        });
+        return checkedCartItems;
+    }
+
+    /** 更新cartItems数量 */
+    replaceCartItemCount(skuId, newCount) {
+        const oldItem = this.findEqualItem(skuId);
+        if (!oldItem) {
+            console.error('异常情况，更新CartItem中的数量不应当找不到相应数据');
+            return;
+        }
+        if (newCount < 1) {
+            console.error('异常情况，CartItem的Count不可能小于1');
+            return;
+        }
+        oldItem.count = newCount;
+        if (oldItem.count >= Cart.SKU_MAX_COUNT) {
+            oldItem.count = Cart.SKU_MAX_COUNT;
+        }
+        this._refreshStorage();
+    }
 }
 
 export {

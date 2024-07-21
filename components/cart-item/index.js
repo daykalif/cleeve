@@ -63,6 +63,13 @@ Component({
             cart.checkItem(this.properties.cartItem.skuId);
             this.properties.cartItem.checked = checked;
             this.triggerEvent("itemcheck", {});
+        },
+
+        /** 点击counter组件，更新cartItem数量 */
+        onSelectCount(event) {
+            let newCount = event.detail.count;
+            cart.replaceCartItemCount(this.properties.cartItem.skuId, newCount);
+            this.triggerEvent("countfloat");
         }
     }
 })
