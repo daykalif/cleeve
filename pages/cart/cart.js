@@ -75,11 +75,13 @@ Page({
     // cartItem点击checkbox后，设置全选状态
     onSingleCheck() {
         this.isAllChecked();
+        this.refreshCartData();
     },
 
     // 删除cartItem后，设置全选状态
     onDeleteItem() {
         this.isAllChecked();
+        this.refreshCartData();
     },
 
     // 点击全选状态
@@ -89,6 +91,7 @@ Page({
         this.setData({
             cartItems: this.data.cartItems
         });
+        this.refreshCartData();
     },
 
     // 购物车数量，总价的计算
