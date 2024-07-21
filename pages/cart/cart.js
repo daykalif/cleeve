@@ -111,4 +111,8 @@ Page({
             totalSkuCount,
         });
     },
+
+    onCountFloat(event) {
+        this.refreshCartData();
+    }
 })
