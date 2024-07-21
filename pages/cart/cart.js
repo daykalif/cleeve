@@ -19,8 +19,12 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad() {
-        cart.getAllSkuFromServer();
+    async onLoad() {
+        // 从服务器同步sku数据
+        const cartData = await cart.getAllSkuFromServer();
+        this.setData({
+            cartItems: cartData.items,
+        });
     },
 
     /**

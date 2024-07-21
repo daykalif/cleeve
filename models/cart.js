@@ -227,6 +227,7 @@ class Cart {
         const serverData = await Sku.getSkusByIds(skuIds);
         this._refreshByServerData(serverData);
         this._refreshStorage();
+        return this._getCartData();
     }
 
     /** 获取缓存中skuIds */
