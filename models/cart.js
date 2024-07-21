@@ -1,3 +1,5 @@
+import {Sku} from "./sku";
+
 class Cart {
     static SKU_MIN_COUNT = 1;
     // 对于某一个sku可买最大数量
@@ -213,6 +215,26 @@ class Cart {
             oldItem.count = Cart.SKU_MAX_COUNT;
         }
         this._refreshStorage();
+    }
+
+    /** 从服务端更新缓存的sku数据 */
+    async getAllSkuFromServer() {
+        const cartData = this._getCartData();
+        if (cartData.items.length === 0) {
+            return null;
+        }
+        const skuIds = this.getSkuIds();
+        const serverData = await Sku.getSkusByIds(skuIds);
+        console.log('serverData', serverData);
+    }
+
+    /** 获取缓存中skuIds */
+    getSkuIds() {
+        const cartData = this._getCartData();
+        if (cartData.items.length === 0) {
+            return [];
+        }
+        return cartData.items.map(item => item.skuId);
     }
 }
 
