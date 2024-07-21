@@ -225,7 +225,8 @@ class Cart {
         }
         const skuIds = this.getSkuIds();
         const serverData = await Sku.getSkusByIds(skuIds);
-        console.log('serverData', serverData);
+        this._refreshByServerData(serverData);
+        this._refreshStorage();
     }
 
     /** 获取缓存中skuIds */
@@ -235,6 +236,30 @@ class Cart {
             return [];
         }
         return cartData.items.map(item => item.skuId);
+    }
+
+    /** 刷新cartData，更新为服务端最新数据 */
+    _refreshByServerData(serverData) {
+        const cartData = this._getCartData();
+        cartData.items.forEach(item => {
+            this._setLatestCartItem(item, serverData);
+        });
+    }
+
+    _setLatestCartItem(item, serverData) {
+        let removed = true;
+        for (let sku of serverData) {
+            if (sku.id === item.skuId) {
+                removed = false;
+                item.sku = sku;
+                break;
+            }
+        }
+        // sku已下架，后端会有2种情况：第一种是sku.online = false；第二种是不返回已下架的sku；（此处后端返回第二种）
+        // 前端也有2种处理方案：第一种是sku.online设为false；第二种是删除sku；（前端应使用第一种）
+        if (removed) {
+            item.sku.online = false;
+        }
     }
 }
 
