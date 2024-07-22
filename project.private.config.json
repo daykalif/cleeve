@@ -3,7 +3,8 @@
   "projectname": "c-sleeve",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": false
+    "urlCheck": false,
+    "bigPackageSizeSupport": false
   },
   "condition": {
     "miniprogram": {
@@ -52,5 +53,6 @@
         }
       ]
     }
-  }
+  },
+  "libVersion": "development"
 }

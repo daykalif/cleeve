@@ -16,6 +16,23 @@
         选择地址
     </l-button>
 
+    <view bind:tap="onChooseAddress" wx:if="{{hasChosen}}" class="address-container">
+        <view class="address-inner">
+            <view class="base-info">
+                <l-icon name="address" l-class="sleeve"></l-icon>
+                <text class="name">{{address.userName}}</text>
+                <text class="phone">{{address.telNumber}}</text>
+            </view>
+            <view class="address-info">
+                <text>{{address.provinceName}}</text>
+                <text>{{address.cityName}}</text>
+                <text>{{address.countyName}}</text>
+                <text>{{address.detailInfo}}</text>
+            </view>
+        </view>
+        <l-icon style="font-weight: bold" name="right" color="#157658" size="30"></l-icon>
+    </view>
+
     <image class="bottom-img" src="/imgs/bottom@address.png"></image>
 
 </view>
