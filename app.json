@@ -79,6 +79,7 @@
     "l-loading": "/miniprogram_npm/lin-ui/loading/index",
     "l-status-show": "/miniprogram_npm/lin-ui/status-show/index",
     "l-slide-view": "/miniprogram_npm/lin-ui/slide-view/index",
-    "s-checkbox": "/components/checkbox/index"
+    "s-checkbox": "/components/checkbox/index",
+    "s-address": "/components/address/index"
   }
 }

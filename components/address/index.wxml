@@ -1,0 +1,21 @@
+<!--components/address/index.wxml-->
+<view class="container">
+    <l-button
+            wx:if="{{!hasChosen}}"
+            bind:lintap="onChooseAddress"
+            plain
+            width="360"
+            height="88"
+            shape="square"
+            icon="address"
+            icon-size="28"
+            icon-color="#157658"
+            l-class="btn"
+            l-icon-class="sleeve"
+    >
+        选择地址
+    </l-button>
+
+    <image class="bottom-img" src="/imgs/bottom@address.png"></image>
+
+</view>

@@ -15,7 +15,9 @@ page {
 
 .sleeve {
     font-family: sleeve !important;
-    color: #157658 !important;
+    font-size: 36rpx;
+    font-style: normal;
+    color: #333333;
 }
 
 /** 自定义图标名称 */
