@@ -121,5 +121,15 @@ Page({
 
     onCountFloat(event) {
         this.refreshCartData();
+    },
+
+    // 跳转结算页面
+    onSettle(event) {
+        if (this.data.totalSkuCount <= 0) {
+            return;
+        }
+        wx.navigateTo({
+            url: '/pages/order/order'
+        })
     }
 })
