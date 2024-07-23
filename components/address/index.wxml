@@ -36,3 +36,12 @@
     <image class="bottom-img" src="/imgs/bottom@address.png"></image>
 
 </view>
+
+<l-dialog content-color="#333333"
+          confirm-color="#157658"
+          title-color="#157658"
+          bind:linconfirm="onDialogConfirm"
+          show="{{showDialog}}"
+          content="请先授权《风袖》获取您的收货地址"
+          title="授权">
+</l-dialog>
