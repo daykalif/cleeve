@@ -1,5 +1,5 @@
 // components/address/index.ts
-import boolean from "../../miniprogram_npm/lin-ui/common/async-validator/validator/boolean";
+import {Address} from "../../models/address";
 
 Component({
 
@@ -14,6 +14,19 @@ Component({
     data: {
         address: Object,
         hasChosen: false,
+    },
+
+    lifetimes: {
+        // 组件初始化-生命周期函数
+        attached() {
+            const address = Address.getLocal();
+            if (address) {
+                this.setData({
+                    address,
+                    hasChosen: true
+                });
+            }
+        }
     },
 
     /**
@@ -35,7 +48,8 @@ Component({
                 this.setData({
                     address: res,
                     hasChosen: true,
-                })
+                });
+                Address.setLocal(res);
             }
         }
     }
