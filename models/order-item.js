@@ -44,6 +44,7 @@ class OrderItem {
         return sku.price
     }
 
+    /** 校验当前OrderItem */
     isOk() {
         this._checkStock()
         this._beyondMaxSkuCount()
