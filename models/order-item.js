@@ -1,5 +1,7 @@
 import {Cart} from "./cart";
 import {accMultiply} from "../utils/number";
+import {OrderException} from "../core/order-exception";
+import {OrderExceptionType} from "../core/enum";
 
 class OrderItem {
     count = 0
@@ -40,6 +42,28 @@ class OrderItem {
             return sku.discount_price
         }
         return sku.price
+    }
+
+    isOk() {
+        this._checkStock()
+        this._beyondMaxSkuCount()
+    }
+
+    /** 确认此次购买的数量库存是否足够支持 */
+    _checkStock() {
+        if (this.stock === 0) {
+            throw new OrderException('当前商品已售罄', OrderExceptionType.SOLD_OUT)
+        }
+        if (this.count > this.stock) {
+            throw new OrderException('购买商品数量超过最大库存', OrderExceptionType.BEYOND_STOCK)
+        }
+    }
+
+    /** 确认此次购买的数量是否超过商品最大购买数量 */
+    _beyondMaxSkuCount() {
+        if (this.count > Cart.SKU_MAX_COUNT) {
+            throw new OrderException('超过商品最大购买数量', OrderExceptionType.BEYOND_SKU_MAX_COUNT)
+        }
     }
 }
 
