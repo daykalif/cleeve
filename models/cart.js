@@ -262,6 +262,31 @@ class Cart {
             item.sku.online = false;
         }
     }
+
+    /** 获取所有checked的sku id */
+    getCheckedSkuIds() {
+        const cartData = this._getCartData()
+        if (cartData.items.length === 0) {
+            return []
+        }
+        const skuIds = []
+        cartData.items.forEach(item => {
+            if (item.checked) {
+                skuIds.push(item.sku.id);
+            }
+        });
+        return skuIds
+    }
+
+    /** 根据skuId查找当前想要购买的sku数量 */
+    getSkuCountBySkuId(skuId) {
+        const cartData = this._getCartData();
+        const item = cartData.items.find(item => item.skuId === skuId);
+        if (!item) {
+            console.error('在订单里找不到');
+        }
+        return item.count;
+    }
 }
 
 export {
