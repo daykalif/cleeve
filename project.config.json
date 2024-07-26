@@ -14,15 +14,15 @@
     },
     "coverView": false,
     "postcss": true,
-    "minified": false,
+    "minified": true,
     "enhance": true,
     "showShadowRootInWxmlPanel": false,
     "ignoreUploadUnusedFiles": true,
     "compileHotReLoad": false,
-    "skylineRenderEnable": true,
+    "skylineRenderEnable": false,
     "es6": true,
-    "condition": true,
-    "compileWorklet": true,
+    "condition": false,
+    "compileWorklet": false,
     "packNpmRelationList": [
       {
         "packageJsonPath": "./package.json",
@@ -39,10 +39,10 @@
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
-  "libVersion": "2.32.3",
   "packOptions": {
     "ignore": [],
     "include": []
   },
+  "libVersion": "2.16.1",
   "appid": "wxc5b8a5917b84f0fd"
 }

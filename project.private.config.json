@@ -3,11 +3,19 @@
   "projectname": "c-sleeve",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": false
+    "urlCheck": false,
+    "bigPackageSizeSupport": false
   },
   "condition": {
     "miniprogram": {
       "list": [
+        {
+          "name": "订单页",
+          "pathName": "pages/order/order",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
         {
           "name": "购物车",
           "pathName": "pages/cart/cart",
@@ -45,5 +53,6 @@
         }
       ]
     }
-  }
+  },
+  "libVersion": "development"
 }
