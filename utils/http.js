@@ -17,7 +17,7 @@ class Http {
             method,
             header: {
                 appkey: config.appkey,
-                clientkey: "I2Pu5Um7kvDtpb7u",
+                clientkey: config.clientkey,
             }
         })
         return res.data;
